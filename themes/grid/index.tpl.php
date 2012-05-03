@@ -39,8 +39,9 @@
   </div>
 </div>
 <?php endif; ?>
-
+  
 <div id='outer-wrap-main'>
+<?=$menu?>
   <div id='middle-wrap-main'>
   <div id='inner-wrap-main'>
     <div id='primary'><?=get_messages_from_session()?><?=@$main?><?=render_views('primary')?><?=render_views()?></div>

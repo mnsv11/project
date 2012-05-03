@@ -17,7 +17,6 @@ class CObject {
   protected $session;
   protected $user;
 
-
   /**
    * Constructor, can be instantiated by sending in the $ly reference.
    */

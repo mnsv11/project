@@ -45,6 +45,8 @@ $ly->config['controllers'] = array(
   
 );
 
+
+
 /**
  * Allow or disallow creation of new user accounts.
  */
@@ -96,9 +98,45 @@ $ly->config['theme'] = array(
     'logo_width'  => 80,
     'logo_height' => 80,
     'footer' => '<p>Lydia &copy; by Mikael Roos (mos@dbwebb.se)</p>',
-  ),
-);
+    'menu' => '<fieldset class="menuField">
+    	<div class="menu">
 
+
+	<div id="navMenu">
+
+	<ul style="border-bottom-width: 0px;">
+	
+	<li><a href="http://www.student.bth.se/~mnsv11/Framework">Hem </a>
+	</li> <!-- End main LI -->
+
+	
+	<li><a href="http://www.student.bth.se/~mnsv11/Framework/developer">Developer</a>
+	</li> <!-- End main LI -->
+
+
+	<li><a href="http://www.student.bth.se/~mnsv11/Framework/guestbook">Guestbook</a>
+	</li> <!-- End main LI -->
+
+
+
+	<li><a href="http://www.student.bth.se/~mnsv11/Framework/blog">Blog</a>
+	</li> <!-- End main LI -->
+	
+	<li><a href="http://www.student.bth.se/~mnsv11/Framework/page">Artiklar</a>
+	</li> <!-- End main LI -->
+	
+	<li><a href="http://www.student.bth.se/~mnsv11/Framework/theme">Tema</a>
+	</li> <!-- End main LI -->
+	
+	</ul> <!-- End main UL -->
+	</div> <!-- End Nav -->
+
+
+</div>
+</fieldset>',
+  ),
+
+);
 
 
 /**

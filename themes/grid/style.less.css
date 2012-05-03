@@ -220,6 +220,12 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;
 #primary{.column(8);}
 #sidebar{.column(4);}
 
+/**---------------------------------------------------------------
+ *view area
+ *
+ */
+ #view{border:1px solid black; width: 500px; padding-left:10px;}
+
 
 /** --------------------------------------------------------------
  * The triptych area.

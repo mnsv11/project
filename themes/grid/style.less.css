@@ -38,8 +38,9 @@ audio:not([controls]){display:none;}
 /** --------------------------------------------------------------
  * Settings
  */
-@bgcolor1: #eee;
-@bgcolor2: #fff;
+@bgcolor1: #7DEC6A;
+@bgcolor2: #83E372;
+@bgcolor3: #7DEC6A;
 @bgtest: hsla(0,0%,90%,0.5);
 @color: #333;
 
@@ -208,6 +209,20 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;
 #featured-middle,
 #featured-last{.column(4);height:100%;}
 
+/**---------------------------------------------------------------
+ *middle wrap main
+ *
+ */
+#middle-wrap-main{margin-bottom:@magic-number;
+		  width:@total-width+31px;
+		  margin:0 auto;
+		  border:1px solid black;
+		  margin-bottom:20px;
+		  padding-top:20px;
+                  background:@bgcolor3;
+		  border-radius: 30px;
+		  box-shadow: 15px 15px 5px #555;}
+
 
 /** --------------------------------------------------------------
  * The main content area.
@@ -281,11 +296,11 @@ a{color:inherit;
  * User feedback message wrappers.
  */
 .error, .alert, .warning, .notice, .success, .info { 
-padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
+padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; border-radius: 30px; }
 
 .error, .alert { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
-.notice, .warning { background: #fff6bf; color: #514721; border-color: #ffd324; }
-.success       { background: #e6efc2; color: #264409; border-color: #c6d880; }
+.notice, .warning { background: #FA0008; color: #514721; border-color: #ffd324; }
+.success       { background: #2FFF05; color: #264409; border-color: #c6d880; }
 .info          { background: #d5edf8; color: #205791; border-color: #92cae4; }
 .error a, .alert a { color: #8a1f11; }
 .notice a, .warning a { color: #514721; }

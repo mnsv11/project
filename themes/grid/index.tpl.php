@@ -41,10 +41,12 @@
 <?php endif; ?>
 
 <div id='outer-wrap-main'>
+  <div id='middle-wrap-main'>
   <div id='inner-wrap-main'>
     <div id='primary'><?=get_messages_from_session()?><?=@$main?><?=render_views('primary')?><?=render_views()?></div>
     <div id='sidebar'><?=render_views('sidebar')?></div>
   </div>
+ </div>
 </div>
 
 <?php if(region_has_content('triptych-first', 'triptych-middle', 'triptych-last')): ?>

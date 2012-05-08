@@ -27,7 +27,6 @@ class CRequest {
   }
 
   
-  
 
   /**
    * Create a url in the way it should be created.

@@ -26,6 +26,8 @@ class CRequest {
     $this->querystringUrl = $urlType= 2 ? true : false;
   }
 
+  
+  
 
   /**
    * Create a url in the way it should be created.
@@ -37,9 +39,10 @@ class CRequest {
   public function CreateUrl($url=null, $method=null, $arguments=null) {
     // If fully qualified just leave it.
     if(!empty($url) && (strpos($url, '://') || $url[0] == '/')) {
+    	    
       return $url;
     }
-    
+     
     // Get current controller if empty and method or arguments choosen
     if(empty($url) && (!empty($method) || !empty($arguments))) {
       $url = $this->controller;

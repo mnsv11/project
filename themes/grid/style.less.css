@@ -134,7 +134,7 @@ tfoot{font-style:italic;}
 /** --------------------------------------------------------------
  * Forms
  */
-input,textarea{font:inherit;}
+input,textarea{font:inherit;border-radius: 3px;}
 input[readonly]{color:#666;}
 label{font-size:smaller;}
 .validation-failed{border:2px solid red;}
@@ -235,6 +235,20 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;
 #primary{.column(8);}
 #sidebar{.column(4);}
 
+
+/** --------------------------------------------------------------
+ * Guestbook
+ *
+ */
+
+#guestbookSquare{background-color:#f6f6f6;
+		 border:1px solid #ccc;
+		 margin-bottom:1em;
+		 padding:1em;
+		 border-radius: 5px;}
+
+
+
 /**---------------------------------------------------------------
  *view area
  *
@@ -317,7 +331,7 @@ div.menu a {padding: 0.3em 1em 0 1em;color: #000000;
 		       
 	div.menu a:link    { }
 	div.menu a:visited { }
-	div.menu a:hover   { color: #111111; background-color: #999999; }
+	div.menu a:hover   { color: #111111; background-color: #999999;border-radius: 10px; }
 	div.menu a:active  { }
 	
 #navMenu {

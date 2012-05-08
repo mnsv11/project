@@ -22,7 +22,6 @@ $ly->config['debug']['db-queries'] = false;
 $ly->config['session_key']  = 'lydia';
 
  
- 
  /**
  * Define the controllers, their classname and enable/disable them.
  *
@@ -44,6 +43,7 @@ $ly->config['controllers'] = array(
   'theme'      => array('enabled' => true,'class' => 'CCTheme'),
   
 );
+
 
 
 
@@ -101,7 +101,6 @@ $ly->config['theme'] = array(
     'menu' => '<fieldset class="menuField">
     	<div class="menu">
 
-
 	<div id="navMenu">
 
 	<ul style="border-bottom-width: 0px;">
@@ -109,15 +108,11 @@ $ly->config['theme'] = array(
 	<li><a href="http://www.student.bth.se/~mnsv11/Framework">Hem </a>
 	</li> <!-- End main LI -->
 
-	
 	<li><a href="http://www.student.bth.se/~mnsv11/Framework/developer">Developer</a>
 	</li> <!-- End main LI -->
 
-
 	<li><a href="http://www.student.bth.se/~mnsv11/Framework/guestbook">Guestbook</a>
 	</li> <!-- End main LI -->
-
-
 
 	<li><a href="http://www.student.bth.se/~mnsv11/Framework/blog">Blog</a>
 	</li> <!-- End main LI -->

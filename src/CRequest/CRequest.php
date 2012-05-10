@@ -26,7 +26,7 @@ class CRequest {
     $this->querystringUrl = $urlType= 2 ? true : false;
   }
 
-  
+ 
 
   /**
    * Create a url in the way it should be created.

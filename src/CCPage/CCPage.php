@@ -26,7 +26,8 @@ class CCPage extends CObject implements IController {
                 ));
   }
 
-
+  
+  
   /**
    * Display a page.
    *
@@ -36,7 +37,7 @@ class CCPage extends CObject implements IController {
     $content = new CMContent($id);
     $this->views->SetTitle('Page: '.htmlEnt($content['title']));
     $this->views->AddInclude(__DIR__ . '/view.tpl.php', array(
-                  'contents' => $content,
+                  'contents' => $content,'usercheck' => $this->session->GetAuthenticatedUser(),
                 ));
   }
 

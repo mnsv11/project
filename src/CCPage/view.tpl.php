@@ -7,7 +7,10 @@
     <p class='smaller-text'><em>Posted on <?=$val['created']?> by <?=$val['owner']?></em></p>
     	<p><?=filter_data($val['data'], $val['filter'])?></p>
     </div> 
-    <p class='smaller-text silent'><a href='<?=create_url("content/edit/{$val['id']}")?>'>edit</a>
+    <?php if($usercheck['acronym'] == $val['owner']):?>
+    	<p class='smaller-text silent'><a href='<?=create_url("content/edit/{$val['id']}")?>'>edit</a>
+    <?php endif;?>
+    
     <class='smaller-text silent'><a href='<?=create_url("page")?>'>back</a></p>
   <?php endforeach; ?>
 

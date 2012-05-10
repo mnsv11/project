@@ -113,6 +113,17 @@ function login_menu() {
 }
 
 
+/**
+ *Generate a menu.
+*/
+function GenerateMenu($items) {
+    $html = "";
+    foreach($items as $item) {
+      $html .= "<li><a href='" . base_url() . "{$item['url']}'>{$item['text']}</a></li>\n";
+    }
+    return $html;
+  }
+
 
 /**
  * Get a gravatar based on the user's email.

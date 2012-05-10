@@ -17,9 +17,11 @@ ini_set('display_errors', 1);
  * Set what to show as debug or developer information in the get_debug() theme helper.
  */
 $ly->config['debug']['lydia'] = false;
+$ly->config['debug']['session'] = false;
 $ly->config['debug']['db-num-queries'] = false;
 $ly->config['debug']['db-queries'] = false;
-$ly->config['session_key']  = 'lydia';
+$ly->config['debug']['timer'] = false;
+
 
  
  /**
@@ -98,6 +100,7 @@ $ly->config['theme'] = array(
     'logo_width'  => 80,
     'logo_height' => 80,
     'footer' => '<p>Lydia &copy; by Mikael Roos (mos@dbwebb.se)</p>',
+    'showMenu' => "true",//Set true or false if menu should be visilble or not
     'menu' => array(
     	    'hem'        => array('text'=>'Hem',  'url'=>'index'),
     	    'developer'  => array('text'=>'Developer',  'url'=>'developer'),
@@ -122,15 +125,11 @@ $ly->config['hashing_algorithm'] = 'sha1salt';
 
 
 /*
- * Set level of error reporting
- */
-error_reporting(-1);
-ini_set('display_errors', 1);
-
-/*
  * Define session name
  */
 $ly->config['session_name'] = preg_replace('/[:\.\/-_]/', '', $_SERVER["SERVER_NAME"]);
+$ly->config['session_key']  = 'lydia';
+
 
 /*
  * Define server timezone

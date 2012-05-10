@@ -15,7 +15,7 @@
   <?php endforeach; ?>
 
 <?php else:?>
-  <p>404: No such page exists.</p>
+  <p>404: No such pages exists.</p>
 <?php endif;?>
 <p>Pages, <a href='<?=create_url("content")?>'>view all content</a>.</p>
 

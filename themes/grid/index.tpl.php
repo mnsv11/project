@@ -39,9 +39,8 @@
   </div>
 </div>
 <?php endif; ?>
-  
 <div id='outer-wrap-main'>
-
+<?php if($showMenu == "true"): ?>
 <fieldset class='menuField'>
     	<div class='menu'>
     	   <div id='navMenu'>
@@ -50,6 +49,7 @@
     	   </div>
     	</div>
 </fieldset>
+<?php endif; ?>
 
   <div id='middle-wrap-main'>
   <div id='inner-wrap-main'>

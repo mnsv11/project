@@ -42,7 +42,7 @@ class CMDatabase {
    /**
     * Execute a select-query with arguments and return the resultset.
     */
-  public function ExecuteSelectQueryAndFetchAll($query, $params=array()){
+  public function ExecuteSelectQueryAndFetchAll($query, $params = array()){
     $this->stmt = $this->db->prepare($query);
     self::$queries[] = $query; 
     self::$numQueries++;

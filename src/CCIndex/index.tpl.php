@@ -4,7 +4,7 @@
 <h2>Download</h2>
 <p>You can download Lydia from github.</p>
 <blockquote>
-<code>git clone git://github.com/mnsv11/lydia.git</code>
+<code>git clone git://github.com/mnsv11/Lydia.git</code>
 </blockquote>
 <p>You can review its source directly on github: <a href='https://github.com/mnsv11/lydia'>https://github.com/mnsv11/lydia</a></p>
 

@@ -113,8 +113,10 @@ $ly->config['base_url'] = null;
  */
 $ly->config['theme'] = array(
   'path'            => 'site/themes/mytheme',
-  'parent'          => 'themes/grid',
+  //'path'            => 'themes/grid',
+  'parent'          => 'themes/grid/',
   'stylesheet'      => 'style.css',
+  //'stylesheet'      => 'style.php',
   'template_file'   => 'index.tpl.php',
   'regions' => array('flash','featured-first','featured-middle','featured-last',
     'primary','sidebar','triptych-first','triptych-middle','triptych-last',

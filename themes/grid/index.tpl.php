@@ -40,23 +40,23 @@
 </div>
 <?php endif; ?>
 <div id='outer-wrap-main'>
-<?php if($showMenu == "true"): ?>
-<fieldset class='menuField'>
-    	<div class='menu'>
-    	   <div id='navMenu'>
-    	     <ul style='border-bottom-width: 0px;'>
-    	        <?=GenerateMenu($menu)?>
-    	   </div>
-    	</div>
-</fieldset>
-<?php endif; ?>
+	<?php if($showMenu == "true"): ?>
+	<fieldset class='menuField'>
+		<div class='menu'>
+		   <div id='navMenu'>
+		     <ul style='border-bottom-width: 0px;'>
+			<?=GenerateMenu($menu)?>
+		   </div>
+		</div>
+	</fieldset>
+	<?php endif; ?>
 
-  <div id='middle-wrap-main'>
-  <div id='inner-wrap-main'>
-    <div id='primary'><?=get_messages_from_session()?><?=@$main?><?=render_views('primary')?><?=render_views()?></div>
-    <div id='sidebar'><?=render_views('sidebar')?></div>
-  </div>
- </div>
+    <div id='middle-wrap-main'>
+	  <div id='inner-wrap-main'>
+	    <div id='primary'><?=get_messages_from_session()?><?=@$main?><?=render_views('primary')?><?=render_views()?></div>
+	    <div id='sidebar'><?=render_views('sidebar')?></div>
+	  </div>
+   </div>
 </div>
 
 <?php if(region_has_content('triptych-first', 'triptych-middle', 'triptych-last')): ?>

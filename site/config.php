@@ -122,7 +122,7 @@ $ly->config['theme'] = array(
     'footer',
   ),
   'data' => array(
-    'header' => 'Lydia',
+    'header' => 'Framework',
     'slogan' => 'A PHP-based MVC-inspired CMF',
     'favicon' => 'logo_80x80.png',
     'logo' => 'logo_80x80.png',

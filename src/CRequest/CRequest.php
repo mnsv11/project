@@ -67,6 +67,8 @@ class CRequest {
     return $prepend . rtrim("$url$method$arguments", '/');
   }
 
+  
+  
 
   /**
    * Parse the current url request and divide it in controller, method and arguments.
@@ -74,8 +76,9 @@ class CRequest {
    * Calculates the base_url of the installation. Stores all useful details in $this.
    *
    * @param $baseUrl string use this as a hardcoded baseurl.
+   * @param $routing array key/val to use for routing if url matches key.
    */
-  public function Init($baseUrl = null) {
+  public function Init($baseUrl = null, $routing=null) {
     $requestUri = $_SERVER['REQUEST_URI'];
     $scriptName = $_SERVER['SCRIPT_NAME'];    
     
@@ -120,6 +123,12 @@ class CRequest {
     $this->controller    = $controller;
     $this->method        = $method;
     $this->arguments    = $arguments;
+    
+        // Check if url matches an entry in routing table
+    if(is_array($routing) && isset($routing[$request]) && $routing[$request]['enabled']) {
+      $request = $routing[$request]['url'];
+    }
+    
   }
 
 

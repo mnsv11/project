@@ -7,12 +7,14 @@
 <code>git clone git://github.com/mnsv11/Lydia.git</code>
 </blockquote>
 <p>You can review its source directly on github: <a href='https://github.com/mnsv11/lydia'>https://github.com/mnsv11/lydia</a></p>
-
 <h2>Installation</h2>
 <p>First you have to make the data-directory writable. This is the place where Lydia needs
 to be able to write and create files.</p>
 <blockquote>
-<code>cd lydia; chmod 777 site/data</code>
+<code>cd lydia; chmod 777 site/data</code><br>
+<code>cd lydia; chmod 777 themes/grid</code>
+<P>Change in .htaccess </p>
+
 </blockquote>
 
 <p>Second, Lydia has some modules that need to be initialised. You can do this through a 

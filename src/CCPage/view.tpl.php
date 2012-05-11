@@ -1,17 +1,18 @@
 <?php if($contents != null):?>
-
   <?php foreach($contents as $val):?>
-  <div id=view>
-    <h2><?=esc($val['title'])?></h2>
-    
-    <p class='smaller-text'><em>Posted on <?=$val['created']?> by <?=$val['owner']?></em></p>
-    	<p><?=filter_data($val['data'], $val['filter'])?></p>
-    </div> 
-    <?php if($usercheck['acronym'] == $val['owner']):?>
-    	<p class='smaller-text silent'><a href='<?=create_url("content/edit/{$val['id']}")?>'>edit</a>
-    <?php endif;?>
-    
-    <class='smaller-text silent'><a href='<?=create_url("page")?>'>back</a></p>
+	  <div id=view>
+	  <?php if($contents['title']): ?>
+		    <h2><?=esc($val['title'])?></h2>
+		    
+		    <p class='smaller-text'><em>Posted on <?=$val['created']?> by <?=$val['owner']?></em></p>
+		    <p><?=filter_data($val['data'], $val['filter'])?></p>
+		    </div> 
+	       <?php if($usercheck['acronym'] == $val['owner']):?>
+	  
+		    <p class='smaller-text silent'><a href='<?=create_url("content/edit/{$val['id']}")?>'>edit</a>
+	       <?php endif;?>
+	  <?php endif;?>  
+	    <class='smaller-text silent'><a href='<?=create_url("page")?>'>back</a></p>
   <?php endforeach; ?>
 
 <?php else:?>

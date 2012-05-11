@@ -3,8 +3,8 @@
 <head>
   <meta charset='utf-8'/>
   <title><?=$title?></title>
-  <link rel='shortcut icon' href='<?=theme_url($favicon)?>'/>
-  <link rel='stylesheet' href='<?=$stylesheet?>'/>
+    <link rel='shortcut icon' href='<?=theme_url($favicon)?>'/>
+  <link rel='stylesheet' href='<?=theme_url($stylesheet)?>'/>
   <?php if(isset($inline_style)): ?><style><?=$inline_style?></style><?php endif; ?>
 </head>
 <body>

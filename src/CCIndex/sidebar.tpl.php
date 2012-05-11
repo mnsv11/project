@@ -16,7 +16,8 @@
   </ul>
   <?php endif; ?>
   
-<?php endforeach; ?>    
+<?php endforeach; ?>  
+ 
 </ul>
 </div>
 

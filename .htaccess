@@ -2,7 +2,7 @@
   RewriteEngine on
   # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/
   #RewriteBase /change/this/to/site/base/url/if/needed/
-  Rewritebase /~mnsv11/Framework/
+  Rewritebase /~mnsv11/project/
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule (.*) index.php/$1 [NC,L]

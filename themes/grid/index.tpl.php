@@ -7,7 +7,7 @@
   <link rel='stylesheet' href='<?=theme_url($stylesheet)?>'/>
   <?php if(isset($inline_style)): ?><style><?=$inline_style?></style><?php endif; ?>
 </head>
-<body>
+<body id=<?=$title?>>
 
 <div id='outer-wrap-header'>
   <div id='inner-wrap-header'>
@@ -53,8 +53,9 @@
 
     <div id='middle-wrap-main'>
 	  <div id='inner-wrap-main'>
+	    <div id='leftbar'><?=render_views('leftbar')?></div>
 	    <div id='primary'><?=get_messages_from_session()?><?=@$main?><?=render_views('primary')?><?=render_views()?></div>
-	    <div id='sidebar'><?=render_views('sidebar')?></div>
+	    <div id='rightbar'><?=render_views('rightbar')?></div>
 	  </div>
    </div>
 </div>

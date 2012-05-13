@@ -232,8 +232,9 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;
 #inner-wrap-main{.wrap();margin-bottom:@magic-number;}
 #main{}
 
-#primary{.column(8);}
-#sidebar{.column(4);}
+#leftbar{.column(3);}
+#primary{.column(6);}
+#rightbar{.column(3);}
 
 
 /** --------------------------------------------------------------
@@ -333,12 +334,15 @@ div.menu a {padding: 0.3em 1em 0 1em;color: #000000;
 	div.menu a:visited { }
 	div.menu a:hover   { color: #111111; background-color: #999999;border-radius: 10px; }
 	div.menu a:active  { }
+
 	
 #navMenu {
 	margin: 0;
 	padding: 0;
 	
 }
+
+
 
 #navMenu ul{
 	

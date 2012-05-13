@@ -9,13 +9,25 @@ class CCMycontroller extends CObject implements IController {
    */
   public function __construct() { parent::__construct(); }
   
+      /**
+   * Implementing interface IController. All controllers must have an index action.
+   */
+  public function Index() {      
+    $modules = new CMModules();
+    $controllers = $modules->AvailableControllers();
+    $this->views->SetTitle('Index');
+    $this->views->AddInclude(__DIR__ . '/leftbar.tpl.php',array(),'leftbar');
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(), 'primary');
+    $this->views->AddInclude(__DIR__ . '/rightbar.tpl.php',array(),'rightbar');
+    
+  }
 
   /**
    * The page about me
    */
-  public function Index() {
+  public function page() {
     $content = new CMContent(5);
-    $this->views->SetTitle('About me'.htmlEnt($content['title']));
+    $this->views->SetTitle('page');
     $this->views->AddInclude(__DIR__ . '/page.tpl.php', array(
                   'content' => $content,
                 ));
@@ -37,7 +49,7 @@ class CCMycontroller extends CObject implements IController {
   /**
    * The guestbook.
    */
-  public function Guestbook() {
+  public function myGuestbook() {
     $guestbook = new CMGuestbook();
     $form = new CFormMyGuestbook($guestbook);
     $status = $form->Check();
@@ -48,8 +60,8 @@ class CCMycontroller extends CObject implements IController {
       $this->RedirectToControllerMethod();
     }
     
-    $this->views->SetTitle('My Guestbook');
-    $this->views->AddInclude(__DIR__ . '/guestbook.tpl.php', array(
+    $this->views->SetTitle('Guestbook');
+    $this->views->AddInclude(__DIR__ . '/myGuestbook.tpl.php', array(
             'entries'=>$guestbook->ReadAll(), 
             'form'=>$form,
          ));
@@ -86,7 +98,9 @@ class CFormMyGuestbook extends CForm {
   public function DoAdd($form, $object) {
     return $object->Add(strip_tags($form['data']['value']));
   }
+  
+  
+
  
  
 }
-

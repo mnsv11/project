@@ -127,9 +127,8 @@ class CCUser extends CObject implements IController {
                            $form['name']['value'],
                            $form['email']['value']
                            )) {
-      $this->session->AddMessage('success', "Welcome {$this->user['name']}. Your have successfully created a new account.");
-      $this->user->Login($form['acronym']['value'], $form['password']['value']);
-      $this->RedirectToController('profile');
+      $this->session->AddMessage('success', "Your have successfully created a new account.");
+      $this->RedirectToController('create');
     } else {
       $this->session->AddMessage('notice', "Failed to create an account.");
       $this->RedirectToController('create');

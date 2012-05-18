@@ -24,6 +24,5 @@
 <p>
 <a href='<?=create_url('content', 'create')?>'>Create new</a>
 <a href='<?=create_url('page', 'view', $content['id'])?>'>View</a>
-<a href='<?=create_url('content')?>'>View all</a>
 </p>
 

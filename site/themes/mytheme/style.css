@@ -3,29 +3,43 @@
  */
 @import url(../../../themes/grid/style.php);
 
-html{background-color:white;}
+html{background-color:#E8E8E8;}
 
-body{background-color:white;}
+body{background-color:#E8E8E8;}
 
 #outer-wrap-header{background-color:white;
 border-bottom:2px solid white;
-margin-bottom:0px;}
+margin-bottom:0px;width:0px;
+  height:30px;
+  margin-top:5px;
+  margin-bottom:5px}
+
+
 
 #outer-wrap-footer{background-color:white;}
 a{color:#808080}
+
+#rightbar{float:right;}
+#featured-middle{width:80%;}
+#featured-first{margin-top:-50px;}
+#inner-wrap-main{background-color:#E8E8E8;}
 
 #middle-wrap-main{margin-bottom:@magic-number;
 
 		  border:0px solid black;
 		  padding-top:0px;
-                  background:white;
+                  background:#E8E8E8;
 		  border-radius: 0px;
 		  box-shadow: 0px 0px 0px #555;}
+#logo_menu{float:left;padding-right:20px;}	
+		  
+#inner-wrap-footer{padding-top:0px;}
 		  
 .menuField{    border-radius: 0px;
 	       border: 0px; 
 	       margin-bottom:10px;
-	       background: white;}
+	       padding-top:20px;
+	       background:#E8E8E8;}
 #navMenu ul{
 
 	 -webkit-border-bottom-right-radius: 0px;
@@ -38,18 +52,41 @@ a{color:#808080}
 
 
 div.menu a:hover   {border-radius: 0px; }
+.menu{padding-top:30px;}
 
+#flash{width:921px; margin-bottom:30px;}
+
+h5#indexNews{margin-bottom:10px;}
+h3#indexNews{width:700px;padding-bottom:15px;}
+img#indexNews{margin-left:50px;}
+
+div#indexNews{border: 1px solid black;
+	      margin-bottom:10px;
+	      padding-left:5px;
+	      padding-bottom:10px;
+	      float:left;
+	      border-radius: 3px;
+	      background:#F6F6F6;
+	      width:194px;}
+	    
+	      
 
 /* 
 Fokus på menyn
 */
 body#Blog a#Blogg-,
 body#Index a#Start-,
-body#Guestbook a#Gästbok-,
-body#page a#Artiklar- {background:#54aabb;}
+body#Rss a#Rss-,
+body#Gästbok a#Gästbok-,
+body#Bilder a#Bilder-,
+body#Historia a#Historia-,
+body#Page a#Nyheter- {background:#075FD0;}
 
 
 
+table{width:450px;}
+#date{font-size:12px;}
 
+#tdmain{width:140px;
 
 

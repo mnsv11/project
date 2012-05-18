@@ -4,45 +4,65 @@
  */
 class CCMycontroller extends CObject implements IController {
 
+	
+	private $picParth;
   /**
    * Constructor
    */
-  public function __construct() { parent::__construct(); }
+  public function __construct() { 
+  	  parent::__construct();
+  	  $this->picParth = 'http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/';
+  
+  }
+  
+  
+  
+  
+  
   
       /**
    * Implementing interface IController. All controllers must have an index action.
    */
-  public function Index() {      
+  public function Index() {    
     $modules = new CMModules();
-    $controllers = $modules->AvailableControllers();
+    $content = new CMContent();
     $this->views->SetTitle('Index');
-    $this->views->AddInclude(__DIR__ . '/leftbar.tpl.php',array(),'leftbar');
-    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(), 'primary');
-    $this->views->AddInclude(__DIR__ . '/rightbar.tpl.php',array(),'rightbar');
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('img'=>$this->picParth . 'GSXR1000.png','contents' => $content->ListAll(array('type'=>'page', 'order-by'=>'id', 'order-order'=>'DESC'))), 'leftbar');
+  }
+
+  
+    public function news() {    
+    $modules = new CMModules();
+    $this->views->SetTitle('Rss');
+    $this->views->AddInclude(__DIR__ . '/rightbar.tpl.php', array('img'=>$this->picParth . 'webBikeWorld5.jpg'), 'primary');
+    $this->views->AddInclude(__DIR__ . '/leftbar.tpl.php', array('img'=>$this->picParth . 'smc_logo.png'), 'leftbar');
+    
+  }
+  
+    public function pics() {    
+    $modules = new CMModules();
+    $this->views->SetTitle('Bilder');
+    $this->views->AddInclude(__DIR__ . '/pics.tpl.php', array('img'=>$this->picParth), 'leftbar');
+  
     
   }
 
-  /**
-   * The page about me
-   */
-  public function page() {
-    $content = new CMContent(5);
-    $this->views->SetTitle('page');
-    $this->views->AddInclude(__DIR__ . '/page.tpl.php', array(
-                  'content' => $content,
-                ));
+    public function history() {    
+    $modules = new CMModules();
+    $this->views->SetTitle('Historia');
+    $this->views->AddInclude(__DIR__ . '/historia.tpl.php', array(), 'primary');
+  
+    
   }
-
-
   /**
    * The blog.
    */
   public function Blog() {
     $content = new CMContent();
-    $this->views->SetTitle('My blog');
+    $this->views->SetTitle('Suzuki');
     $this->views->AddInclude(__DIR__ . '/blog.tpl.php', array(
                   'contents' => $content->ListAll(array('type'=>'post', 'order-by'=>'title', 'order-order'=>'DESC')),
-                ));
+                ), 'featured-first');
   }
 
 
@@ -60,7 +80,7 @@ class CCMycontroller extends CObject implements IController {
       $this->RedirectToControllerMethod();
     }
     
-    $this->views->SetTitle('Guestbook');
+    $this->views->SetTitle('Gästbok');
     $this->views->AddInclude(__DIR__ . '/myGuestbook.tpl.php', array(
             'entries'=>$guestbook->ReadAll(), 
             'form'=>$form,
@@ -89,6 +109,7 @@ class CFormMyGuestbook extends CForm {
     $this->objecyt = $object;
     $this->AddElement(new CFormElementTextarea('data', array('label'=>'Add entry:')))
          ->AddElement(new CFormElementSubmit('add', array('callback'=>array($this, 'DoAdd'), 'callback-args'=>array($object))));
+         
   }
   
 

@@ -20,14 +20,14 @@ class CFormContent extends CForm {
     $save = isset($content['id']) ? 'save' : 'create';
     $this->AddElement(new CFormElementHidden('id', array('value'=>$content['id'])))
          ->AddElement(new CFormElementText('title', array('value'=>$content['title'])))
-         ->AddElement(new CFormElementText('key', array('value'=>$content['key'])))
+         ->AddElement(new CFormElementHidden('key', array('value'=>$content['title'])))
          ->AddElement(new CFormElementTextarea('data', array('label'=>'Content:', 'value'=>$content['data'])))
          ->AddElement(new CFormElementText('type', array('value'=>$content['type'])))
-         ->AddElement(new CFormElementText('filter', array('value'=>$content['filter'])))
+         ->AddElement(new CFormElementHidden('filter', array('value'=>"bbcode")))
          ->AddElement(new CFormElementSubmit($save, array('callback'=>array($this, 'DoSave'), 'callback-args'=>array($content))));
 
-    $this->SetValidation('title', array('not_empty'))
-         ->SetValidation('key', array('not_empty'));
+    $this->SetValidation('title', array('not_empty'));
+         
   }
   
 

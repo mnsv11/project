@@ -12,10 +12,32 @@ function get_tools() {
   global $ly;
   return <<<EOD
 <p>
+@<a href="mailto:svedklint@telia.com">Kontakt</a>  
 </p>
+<p>Links: 
+<a href="http://www.suzukicycles.com/" target= _blank>Suzuki</a>
+<a href="http://www.suzukimc.se/" target= _blank>Suzuki Sverige</a>
+<a href="http://www.suzuki-motorcykel.se/" target= _blank>Suzuki MC</a>
+</p>
+
+EOD;
+
+/**
+*reklam
+*/
+}function reklam() {
+  global $ly;
+  return <<<EOD
+
+
+<a href="http://www.eumoppenomc.se/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/eumoppen.png" width="200" height="50" border="0" alt="Eu moppen"></a> 
+<a href="http://www.claessonsmotor.se/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/claessons.png" width="200" height="50" border="0" alt="Claessonsmotor"></a>
+<a href="http://www.mcdoktorn.se//" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/mcdok.gif" width="200" height="60" border="0" alt="Mc doktorn"></a>
+<a href="http://http://www.handelsboden.com/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/hb.png" width="200" height="80" border="0" alt="Handelsboden"></a>
+<a href="http://http://www.24mx.se/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/24mx.jpg" width="200" height="140" border="0" alt="24mx"></a>
+<a href="http://http://www.swedenrock.com/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/swedenrock.gif" width="200" height="300" border="0" alt="Sweden Rock"></a>
 EOD;
 }
-
 
 /**
  * Print debuginformation from the framework.

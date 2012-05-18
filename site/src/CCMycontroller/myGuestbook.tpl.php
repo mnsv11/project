@@ -1,5 +1,5 @@
-<h1>My Guestbook</h1>
-<p>Leave a message and be happy.</p>
+<h1>Gästbok</h1>
+
 
 <?=$form->GetHTML()?>
 

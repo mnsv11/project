@@ -110,9 +110,9 @@ class CMContent extends CObject implements IHasSQL, ArrayAccess, IModule {
     }
     $rowcount = $this->db->RowCount();
     if($rowcount) {
-      $this->AddMessage('success', "Successfully {$msg} content '" . htmlEnt($this['key']) . "'.");
+      $this->AddMessage('success', "Successfully {$msg} content");
     } else {
-      $this->AddMessage('error', "Failed to {$msg} content '" . htmlEnt($this['key']) . "'.");
+      $this->AddMessage('error', "Failed to {$msg} content");
     }
     return $rowcount === 1;
   }

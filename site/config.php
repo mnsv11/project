@@ -124,7 +124,7 @@ $ly->config['theme'] = array(
     'footer',
   ),
   'data' => array(
-    'header' => 'Grönköpings veckoblad',
+    'header' => '',
     'slogan' => '',
     'favicon' => 'logo.png',
     'logo' => 'logo.png',
@@ -133,14 +133,17 @@ $ly->config['theme'] = array(
     'footer' => '</p>',
     'showMenu' => "true",//Set true or false if menu should be visilble or not
     'menu' => array(
-    	    'my'        => array('text'=>'Start',      'url'=>'my'),
+    	    'my'         => array('text'=>'Start',        'url'=>'my'),
     	 // 'developer'  => array('text'=>'Developer',  'url'=>'developer'),
     	 // 'guestbook'  => array('text'=>'Guestbook',   'url'=>'guestbook'),
-    	    'page'       => array('text'=>'Artiklar',   'url'=>'my/page'),
-    	    'blog'       => array('text'=>'Blogg',      'url'=>'blog'),
-    	    'theme'      => array('text'=>'Themes',     'url'=>'theme'),
+    	    'page'       => array('text'=>'Nyheter',     'url'=>'page'),
+    	    'global'     => array('text'=>'Rss',         'url'=>'my/news'),
+    	  //  'blog'       => array('text'=>'Blogg',       'url'=>'blog'),
+    	  //'theme'      => array('text'=>'Themes',     'url'=>'theme'),
     	  //'modules'    => array('text'=>'Moduls',     'url'=>'modules'),
-    	    'gb'         => array('text'=>'Gästbok',         'url'=>'my/myGuestbook'),
+    	  'Bilder'     => array('text'=>'Bilder',     'url'=>'my/pics'),
+    	  'Historia'     => array('text'=>'Historia',     'url'=>'my/history'),
+    	  'Gästbok'           => array('text'=>'Gästbok',     'url'=>'my/myGuestbook'),
     	    ),
   ),
 );

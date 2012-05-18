@@ -7,14 +7,29 @@
   <link rel='stylesheet' href='<?=theme_url($stylesheet)?>'/>
   <?php if(isset($inline_style)): ?><style><?=$inline_style?></style><?php endif; ?>
 </head>
+
 <body id=<?=$title?>>
 
+<?php if($showMenu == "true"): ?>
+
+	<fieldset class='menuField'>
+	<img id='logo_menu' src='<?=theme_url($logo)?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' /img>
+		<div class='menu'>
+		   <div id='navMenu'>
+		     <ul style='border-bottom-width: 0px;'>
+			<?=GenerateMenu($menu)?>
+			<div id='login-menu'><?=login_menu()?></div>
+		   </div>
+		   
+		</div>
+	</fieldset>
+	<?php endif; ?>
 <div id='outer-wrap-header'>
   <div id='inner-wrap-header'>
     <div id='header'>
-      <div id='login-menu'><?=login_menu()?></div>
+      
       <div id='banner'>
-        <a href='<?=base_url()?>'><img id='site-logo' src='<?=theme_url($logo)?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' /></a>
+        
         <span id='site-title'><a href='<?=base_url()?>'><?=$header?></a></span>
         <span id='site-slogan'><?=$slogan?></span>
       </div>
@@ -40,22 +55,13 @@
 </div>
 <?php endif; ?>
 <div id='outer-wrap-main'>
-	<?php if($showMenu == "true"): ?>
-	<fieldset class='menuField'>
-		<div class='menu'>
-		   <div id='navMenu'>
-		     <ul style='border-bottom-width: 0px;'>
-			<?=GenerateMenu($menu)?>
-		   </div>
-		</div>
-	</fieldset>
-	<?php endif; ?>
+	
 
     <div id='middle-wrap-main'>
 	  <div id='inner-wrap-main'>
 	    <div id='leftbar'><?=render_views('leftbar')?></div>
 	    <div id='primary'><?=get_messages_from_session()?><?=@$main?><?=render_views('primary')?><?=render_views()?></div>
-	    <div id='rightbar'><?=render_views('rightbar')?></div>
+	    <div id='rightbar'><?=render_views('rightbar')?><?=reklam()?></div>
 	  </div>
    </div>
 </div>

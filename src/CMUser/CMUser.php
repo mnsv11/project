@@ -45,9 +45,13 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
       'create table user'       => "CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, email TEXT, algorithm TEXT, salt TEXT, password TEXT, created DATETIME default (datetime('now')), updated DATETIME default NULL);",
       'create table group'      => "CREATE TABLE IF NOT EXISTS Groups (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, created DATETIME default (datetime('now')), updated DATETIME default NULL);",
       'create table user2group' => "CREATE TABLE IF NOT EXISTS User2Groups (idUser INTEGER, idGroups INTEGER, created DATETIME default (datetime('now')), PRIMARY KEY(idUser, idGroups));",
+      'remove user'		=> 'DELETE FROM User WHERE (name=? and email=?);',
       'insert into user'        => 'INSERT INTO User (acronym,name,email,algorithm,salt,password) VALUES (?,?,?,?,?,?);',
+      'getUserId'		=> 'SELECT id FROM User WHERE (name=? and email=?);',
+      'getUsers'		=> 'SELECT * FROM User;',
       'insert into group'       => 'INSERT INTO Groups (acronym,name) VALUES (?,?);',
       'insert into user2group'  => 'INSERT INTO User2Groups (idUser,idGroups) VALUES (?,?);',
+      'delete user user2group'  => 'DELETE FROM User2Groups WHERE (idUser=?);',
       'check user password'     => 'SELECT * FROM User WHERE (acronym=? OR email=?);',
       'get group memberships'   => 'SELECT * FROM Groups AS g INNER JOIN User2Groups AS ug ON g.id=ug.idGroups WHERE ug.idUser=?;',
       'update profile'          => "UPDATE User SET name=?, email=?, updated=datetime('now') WHERE id=?;",
@@ -232,14 +236,66 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
    * @param $email string the user email.
    * @returns boolean true if user was created or else false and sets failure message in session.
    */
-  public function Create($acronym, $password, $name, $email) {
+  public function Create($acronym, $password, $name, $email, $group) {
     $pwd = $this->CreatePassword($password);
     $this->db->ExecuteQuery(self::SQL('insert into user'), array($acronym, $name, $email, $pwd['algorithm'], $pwd['salt'], $pwd['password']));
+    
+    if($group == "admin")
+    {
+    	    $group = "1";
+    }
+    else
+    {
+    	    $group = "2";
+    }
+   
+     $userInfo = $this->db->LastInsertId();
+    $this->userGroup($userInfo,$group);
     if($this->db->RowCount() == 0) {
       $this->session->AddMessage('error', "Failed to create user.");
       return false;
     }
     return true;
   }
+  
+  
+  /**
+  *insert to what group user belong to when a account is created
+  */
+  
+   private function userGroup($idUser,$idGroup) {
+    $this->db->ExecuteQuery(self::SQL('insert into user2group'), array($idUser,$idGroup));
+     
+    if($this->db->RowCount() == 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  
+  /**
+  *remove user
+  */
+    public function Remove($name, $email) {
+    $userId = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('getUserId'), array($name, $email));
+    $this->db->ExecuteQuery(self::SQL('delete user user2group'), array($userId[0]['id']));
+    $this->db->ExecuteQuery(self::SQL('remove user'), array($name, $email));
+    if($this->db->RowCount() == 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  
+    /**
+  *get users
+  */
+    public function getUsers() {
+    return $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('getUsers'), array());
+  }
+
+  
+  
+  
   
 }

@@ -13,9 +13,10 @@ class CFormUserCreate extends CForm {
     parent::__construct();
     $this->AddElement(new CFormElementText('acronym', array('required'=>true)))
          ->AddElement(new CFormElementPassword('password', array('required'=>true)))
-         ->AddElement(new CFormElementPassword('password1', array('required'=>true, 'label'=>'Password again:')))
+         ->AddElement(new CFormElementPassword('password1', array('required'=>true, 'label'=>'Password again:')))         
          ->AddElement(new CFormElementText('name', array('required'=>true)))
          ->AddElement(new CFormElementText('email', array('required'=>true)))
+         ->AddElement(new CFormElementText('userGroup', array('required'=>false)))
          ->AddElement(new CFormElementSubmit('create', array('callback'=>array($object, 'DoCreate'))));
          
     $this->SetValidation('acronym', array('not_empty'))

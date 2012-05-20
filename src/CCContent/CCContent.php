@@ -48,6 +48,7 @@ class CCContent extends CObject implements IController {
                   'user'=>$this->user, 
                   'content'=>$content, 
                   'form'=>$form,
+                  'usercheck' => $this->session->GetAuthenticatedUser(),
                 ));
   }
   

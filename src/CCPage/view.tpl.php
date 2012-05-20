@@ -8,7 +8,7 @@
 		    <p class='smaller-text'><em>Posted on <?=$val['created']?> by <?=$val['owner']?></em></p>
 		    <p><?=filter_data($val['data'], $val['filter'])?></p>
 		     
-	       <?php if($usercheck['acronym'] == $val['owner']):?>
+	       <?php if($usercheck['acronym'] == $val['owner'] || $usercheck['groups'][0]['idGroups'] == "1"):?>
 	       	
 		    <p class='smaller-text silent'><a href='<?=create_url("content/edit/{$val['id']}")?>'>edit</a>
 		   

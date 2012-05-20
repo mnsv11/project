@@ -111,30 +111,75 @@ class CCUser extends CObject implements IController {
       $this->RedirectToController('Create');
     }
     $this->views->SetTitle('Create user');
-    $this->views->AddInclude(__DIR__ . '/create.tpl.php', array('form' => $form->GetHTML()));     
+    $this->views->AddInclude(__DIR__ . '/create.tpl.php', array('form' => $form->GetHTML(),'usercheck' => $this->session->GetAuthenticatedUser()));     
   }
+  
+   
     /**
    * Perform a creation of a user as callback on a submitted form.
    *
    * @param $form CForm the form that was submitted
    */
-  public function DoCreate($form) {    
+  public function DoCreate($form) {   
     if($form['password']['value'] != $form['password1']['value'] || empty($form['password']['value']) || empty($form['password1']['value'])) {
       $this->session->AddMessage('error', 'Password does not match or is empty.');
       $this->RedirectToController('create');
     } else if($this->user->Create($form['acronym']['value'], 
                            $form['password']['value'],
                            $form['name']['value'],
-                           $form['email']['value']
+                           $form['email']['value'],
+                           $form['userGroup']['value']
                            )) {
       $this->session->AddMessage('success', "Your have successfully created a new account.");
       $this->RedirectToController('create');
+      
     } else {
       $this->session->AddMessage('notice', "Failed to create an account.");
       $this->RedirectToController('create');
     }
   }
   
+  
+    /**
+   * remove a user.
+   */
+      public function Remove() {
+    $form = new CFormUserRemove($this);
+    if($form->Check() === false) {
+      $this->session->AddMessage('notice', 'You must fill in all values.');
+      $this->RedirectToController('Remove');
+    }
+    $this->views->SetTitle('Remove user');
+    $this->views->AddInclude(__DIR__ . '/remove.tpl.php', array('form' => $form->GetHTML(),'usercheck' => $this->session->GetAuthenticatedUser()));     
+  }
+  
+      /**
+   * Perform a remove of a user as callback on a submitted form.
+   *
+   * @param $form CForm the form that was submitted
+   */
+  public function DoRemove($form) {    
+    if($this->user->Remove($form['name']['value'],
+                           $form['email']['value']
+                           )) {
+      $this->session->AddMessage('success', "Your have successfully removed a account.");
+      $this->RedirectToController('remove');
+    } else {
+      $this->session->AddMessage('notice', "Failed to remove an account.");
+      $this->RedirectToController('remove');
+    }
+  }
+  
+  
+      /**
+   * get users.
+   */
+      public function getUsers() {
+    $this->views->SetTitle('Show users');
+    
+    $this->views->AddInclude(__DIR__ . '/showUsers.tpl.php', array('usercheck' => $this->session->GetAuthenticatedUser(), 
+    	    			       'users' => $this->user->getUsers()));     
+  }
 
   /**
    * Logout a user.

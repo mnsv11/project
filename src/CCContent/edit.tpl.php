@@ -1,3 +1,4 @@
+<?php if($usercheck['groups'][0]['idGroups']):?>
 <?php if($content['created']): ?>
   <h1>Edit Content</h1>
   <p>You can edit and save this content.</p>
@@ -25,4 +26,6 @@
 <a href='<?=create_url('content', 'create')?>'>Create new</a>
 <a href='<?=create_url('page', 'view', $content['id'])?>'>View</a>
 </p>
-
+<?php else:?>
+<h3>Du har inte behörighet för denna sidan</h3>
+<?php endif;?>

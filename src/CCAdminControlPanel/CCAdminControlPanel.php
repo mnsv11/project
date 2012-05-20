@@ -19,8 +19,9 @@ class CCAdminControlPanel extends CObject implements IController {
    * Show profile information of the user.
    */
   public function Index() {
+   
     $this->views->SetTitle('ACP: Admin Control Panel');
-    $this->views->AddInclude(__DIR__ . '/index.tpl.php');
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php',array('usercheck' => $this->session->GetAuthenticatedUser()));
   }
  
 

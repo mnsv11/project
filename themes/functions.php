@@ -119,7 +119,7 @@ function login_menu() {
 function GenerateMenu($items) {
     $html = "";
     foreach($items as $item) {
-    	    $html .= "<li><a id=" . $item['text'] . "- href='" . base_url() . "{$item['url']}'>{$item['text']}</a></li>\n";
+    	    $html .= "<li><a id=" . $item['altText'] . "- href='" . base_url() . "{$item['url']}'>{$item['text']}</a></li>\n";
     }
     return $html;
   }

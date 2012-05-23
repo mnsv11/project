@@ -1,7 +1,6 @@
 <h1>Gästbok</h1>
 
-
-<?=$form->GetHTML()?>
+<?=$form->GetHTML();?>
 
 <h2>Latest messages</h2>
 

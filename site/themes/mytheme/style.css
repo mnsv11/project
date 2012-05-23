@@ -40,6 +40,10 @@ a{color:#808080}
 	       margin-bottom:10px;
 	       padding-top:20px;
 	       background:#E8E8E8;}
+	       
+
+}
+
 #navMenu ul{
 
 	 -webkit-border-bottom-right-radius: 0px;
@@ -48,14 +52,25 @@ a{color:#808080}
 	 -moz-border-radius-bottomleft: 0px;
 	 border-bottom-right-radius: 0px;
 	 border-bottom-left-radius: 0px;
+	 
+}
+#navMenu ul li a {
+
+	width: auto;
+	margin:10px;
+	padding-left:5px;
+	padding-right:5px;
+
+
 }
 
 
 div.menu a:hover   {border-radius: 0px; }
+		    
 .menu{padding-top:30px;}
 
 #flash{width:921px; margin-bottom:30px;}
-
+#about{float:left;padding-right:10px;padding-top:7px;}
 h5#indexNews{margin-bottom:10px;}
 h3#indexNews{width:700px;padding-bottom:15px;}
 img#indexNews{margin-left:50px;}
@@ -80,6 +95,7 @@ body#Rss a#Rss-,
 body#Gästbok a#Gästbok-,
 body#Bilder a#Bilder-,
 body#Historia a#Historia-,
+body#Om a#Om-,
 body#Page a#Nyheter- {background:#075FD0;}
 
 

@@ -23,6 +23,7 @@ $ly->config['debug']['db-queries'] = false;
 $ly->config['debug']['timer'] = false;
 
 
+$ly->config['installed'] = array('check' => 'false');
  
  /**
  * Define the controllers, their classname and enable/disable them.
@@ -34,6 +35,7 @@ $ly->config['debug']['timer'] = false;
  * which is called in the frontcontroller phase from index.php.
  */
 $ly->config['controllers'] = array(
+  //'index'     => array('enabled' => true,'class' => 'CCIndex'),
   'index'     => array('enabled' => true,'class' => 'CCMycontroller'),
   'developer' => array('enabled' => false,'class' => 'CCDeveloper'),
   'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
@@ -133,17 +135,18 @@ $ly->config['theme'] = array(
     'footer' => '</p>',
     'showMenu' => "true",//Set true or false if menu should be visilble or not
     'menu' => array(
-    	    'my'         => array('text'=>'Start',        'url'=>'my'),
-    	 // 'developer'  => array('text'=>'Developer',  'url'=>'developer'),
-    	 // 'guestbook'  => array('text'=>'Guestbook',   'url'=>'guestbook'),
-    	    'page'       => array('text'=>'Nyheter',     'url'=>'page'),
-    	    'global'     => array('text'=>'Rss',         'url'=>'my/news'),
-    	  //  'blog'       => array('text'=>'Blogg',       'url'=>'blog'),
-    	  //'theme'      => array('text'=>'Themes',     'url'=>'theme'),
-    	  //'modules'    => array('text'=>'Moduls',     'url'=>'modules'),
-    	  'Bilder'     => array('text'=>'Bilder',     'url'=>'my/pics'),
-    	  'Historia'     => array('text'=>'Historia',     'url'=>'my/history'),
-    	  'Gästbok'           => array('text'=>'Gästbok',     'url'=>'my/myGuestbook'),
+    	    'my'         => array('text'=>'Start',               'altText'=>'Start',     'url'=>'my'),
+    	 // 'developer'  => array('text'=>'Developer',           'altText'=>'Developer', 'url'=>'developer'),
+    	 // 'guestbook'  => array('text'=>'Guestbook',           'altText'=>'Guestbook', 'url'=>'guestbook'),
+    	    'page'       => array('text'=>'Nyheter/Aktiviteter', 'altText'=>'Nyheter',   'url'=>'page'),
+    	    'global'     => array('text'=>'Rss',                 'altText'=>'Rss',       'url'=>'my/news'),
+    	  //  'blog'       => array('text'=>'Blogg',             'altText'=>'Blogg',     'url'=>'blog'),
+    	  //'theme'      => array('text'=>'Themes',              'altText'=>'Themes',    'url'=>'theme'),
+    	  //'modules'    => array('text'=>'Moduls',              'altText'=>'Moduls',    'url'=>'modules'),
+    	    'Bilder'     => array('text'=>'Bilder',              'altText'=>'Bilder',    'url'=>'my/pics'),
+    	  'Historia'     => array('text'=>'Historia',            'altText'=>'Historia',  'url'=>'my/history'),
+    	  'Gästbok'      => array('text'=>'Gästbok',              'altText'=>'Gästbok',  'url'=>'my/myGuestbook'),
+    	  'Om'           => array('text'=>'Om',                   'altText'=>'Om',       'url'=>'my/about'),
     	    ),
   ),
 );

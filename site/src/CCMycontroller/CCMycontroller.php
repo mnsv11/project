@@ -28,9 +28,12 @@ class CCMycontroller extends CObject implements IController {
     $content = new CMContent();
     $this->views->SetTitle('Index');
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('img'=>$this->picParth . 'GSXR1000.png','contents' => $content->ListAll(array('type'=>'page', 'order-by'=>'id', 'order-order'=>'DESC'))), 'leftbar');
+
   }
 
-  
+  /**
+   * News.
+   */
     public function news() {    
     $modules = new CMModules();
     $this->views->SetTitle('Rss');
@@ -39,6 +42,10 @@ class CCMycontroller extends CObject implements IController {
     
   }
   
+  
+  /**
+   * Pictures.
+   */
     public function pics() {    
     $modules = new CMModules();
     $this->views->SetTitle('Bilder');
@@ -46,14 +53,26 @@ class CCMycontroller extends CObject implements IController {
   
     
   }
-
+/**
+   * History.
+   */
     public function history() {    
     $modules = new CMModules();
     $this->views->SetTitle('Historia');
     $this->views->AddInclude(__DIR__ . '/historia.tpl.php', array(), 'primary');
-  
-    
+
   }
+  
+  /**
+   * About me.
+   */
+      public function about() {    
+    $modules = new CMModules();
+    $this->views->SetTitle('Om');
+    $this->views->AddInclude(__DIR__ . '/om.tpl.php', array('img'=>$this->picParth . 'mig.jpg'), 'primary');
+
+  }
+  
   /**
    * The blog.
    */
@@ -84,7 +103,9 @@ class CCMycontroller extends CObject implements IController {
     $this->views->AddInclude(__DIR__ . '/myGuestbook.tpl.php', array(
             'entries'=>$guestbook->ReadAll(), 
             'form'=>$form,
+            
          ));
+
   }
   
 
@@ -109,7 +130,7 @@ class CFormMyGuestbook extends CForm {
     $this->objecyt = $object;
     $this->AddElement(new CFormElementTextarea('data', array('label'=>'Add entry:')))
          ->AddElement(new CFormElementSubmit('add', array('callback'=>array($this, 'DoAdd'), 'callback-args'=>array($object))));
-         
+           	      
   }
   
 

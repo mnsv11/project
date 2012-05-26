@@ -18,6 +18,11 @@
 		   <div id='navMenu'>
 		     <ul style='border-bottom-width: 0px;'>
 			<?=GenerateMenu($menu)?>
+			<?php $url = log_out()?>
+			<?php $check = status()?>
+			<?php if($check == "logged"):?>
+				<meta http-equiv="refresh" content="60; URL=<?=$url?>"/>
+			<?php endif; ?>
 			<div id='login-menu'><?=login_menu()?></div>
 		   </div>
 		   

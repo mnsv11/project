@@ -1,5 +1,5 @@
 <h1>Nyheter</h1>
-<?php if($usercheck['acronym']):?>
+<?php if($usercheck['groups'][0]['idGroups'] == "1"):?>
 <p><a href='<?=create_url("content/create")?>'>Lägg till nyhet</a>.</p>
 <?php endif;?>
 

@@ -112,6 +112,19 @@ function login_menu() {
   return "<nav>$items</nav>";
 }
 
+function status(){
+	$ly = CLydia::Instance();
+	if($ly->user['isAuthenticated']) {
+	return "logged";
+	}
+}
+
+function log_out(){
+	
+  return CLydia::Instance()->request->base_url . 'user/logout';
+	
+}
+
 
 /**
  *Generate a menu.

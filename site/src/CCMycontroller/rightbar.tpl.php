@@ -1,6 +1,6 @@
 <br>
 <br><p>
-<img style="padding-top:10px;" src=<?=$img?> width="190" height="50" alt="Huset" border="0">
+<img style="padding-top:10px;" src=<?=$img?> width="190" height="50" alt="logo" border="0">
 </p>
 
 

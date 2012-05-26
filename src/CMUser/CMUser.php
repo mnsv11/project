@@ -52,6 +52,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
       'insert into group'       => 'INSERT INTO Groups (acronym,name) VALUES (?,?);',
       'insert into user2group'  => 'INSERT INTO User2Groups (idUser,idGroups) VALUES (?,?);',
       'delete user user2group'  => 'DELETE FROM User2Groups WHERE (idUser=?);',
+      'get user user2group'     => 'SELECT * FROM User2Groups;',
       'check user password'     => 'SELECT * FROM User WHERE (acronym=? OR email=?);',
       'get group memberships'   => 'SELECT * FROM Groups AS g INNER JOIN User2Groups AS ug ON g.id=ug.idGroups WHERE ug.idUser=?;',
       'update profile'          => "UPDATE User SET name=?, email=?, updated=datetime('now') WHERE id=?;",
@@ -222,7 +223,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
    */
   public function ChangePassword($plain) {
     $password = $this->CreatePassword($plain);
-    $this->db->ExecuteQuery(self::SQL('update password'), array($password['algoritm'], $password['salt'], $password['password'], $this['id']));
+    $this->db->ExecuteQuery(self::SQL('update password'), array($password['algorithm'], $password['salt'], $password['password'], $this['id']));
     return $this->db->RowCount() === 1;
   }
   
@@ -278,8 +279,11 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
   */
     public function Remove($name, $email) {
     $userId = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('getUserId'), array($name, $email));
-    $this->db->ExecuteQuery(self::SQL('delete user user2group'), array($userId[0]['id']));
-    $this->db->ExecuteQuery(self::SQL('remove user'), array($name, $email));
+    if($userId)
+    {
+    	    $this->db->ExecuteQuery(self::SQL('delete user user2group'), array($userId[0]['id']));
+    	    $this->db->ExecuteQuery(self::SQL('remove user'), array($name, $email));
+    }
     if($this->db->RowCount() == 0) {
       return false;
     }
@@ -294,7 +298,13 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
     return $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('getUsers'), array());
   }
 
-  
+      /**
+  *get users
+  */
+    public function getUser2group() {
+
+    return $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('get user user2group'), array());
+  }
   
   
   

@@ -158,8 +158,9 @@ class CCUser extends CObject implements IController {
    *
    * @param $form CForm the form that was submitted
    */
-  public function DoRemove($form) {    
-    if($this->user->Remove($form['name']['value'],
+  public function DoRemove($form) {
+  	  $check = false;
+    if($check = $this->user->Remove($form['name']['value'],
                            $form['email']['value']
                            )) {
       $this->session->AddMessage('success', "Your have successfully removed a account.");
@@ -178,7 +179,8 @@ class CCUser extends CObject implements IController {
     $this->views->SetTitle('Show users');
     
     $this->views->AddInclude(__DIR__ . '/showUsers.tpl.php', array('usercheck' => $this->session->GetAuthenticatedUser(), 
-    	    			       'users' => $this->user->getUsers()));     
+    	    			       'users' => $this->user->getUsers(),
+    	    			       'userGroup' => $this->user->getUser2group()));     
   }
 
   /**

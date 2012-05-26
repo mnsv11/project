@@ -105,11 +105,9 @@ class CCMycontroller extends CObject implements IController {
             'form'=>$form,
             
          ));
-
   }
   
-
-} 
+}
 
 
 /**
@@ -127,7 +125,7 @@ class CFormMyGuestbook extends CForm {
    */
   public function __construct($object) {
     parent::__construct();
-    $this->objecyt = $object;
+    $this->object = $object;
     $this->AddElement(new CFormElementTextarea('data', array('label'=>'Add entry:')))
          ->AddElement(new CFormElementSubmit('add', array('callback'=>array($this, 'DoAdd'), 'callback-args'=>array($object))));
            	      
@@ -142,7 +140,10 @@ class CFormMyGuestbook extends CForm {
   }
   
   
-
- 
- 
 }
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-<?php if($usercheck['groups'][0]['idGroups']):?>
+<?php if($usercheck['groups'][0]['idGroups'] == "1"):?>
 <?php if($content['created']): ?>
   <h1>Edit Content</h1>
   <p>You can edit and save this content.</p>

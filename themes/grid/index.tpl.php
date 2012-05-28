@@ -21,7 +21,7 @@
 			<?php $url = log_out()?>
 			<?php $check = status()?>
 			<?php if($check == "logged"):?>
-				<meta http-equiv="refresh" content="60; URL=<?=$url?>"/>
+				<meta http-equiv="refresh" content="600; URL=<?=$url?>"/>
 			<?php endif; ?>
 			<div id='login-menu'><?=login_menu()?></div>
 		   </div>

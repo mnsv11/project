@@ -35,13 +35,14 @@ $ly->config['installed'] = array('check' => 'false');
  * which is called in the frontcontroller phase from index.php.
  */
 $ly->config['controllers'] = array(
-  //'index'     => array('enabled' => true,'class' => 'CCIndex'),
-  'index'     => array('enabled' => true,'class' => 'CCMycontroller'),
+  'index'     => array('enabled' => true,'class' => 'CCIndex'),
+ // 'index'     => array('enabled' => true,'class' => 'CCMycontroller'),
   'developer' => array('enabled' => false,'class' => 'CCDeveloper'),
   'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
   'user'      => array('enabled' => true,'class' => 'CCUser'),
   'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
   'content'   => array('enabled' => true,'class' => 'CCContent'),
+  'pics'      => array('enabled' => true,'class' => 'CCPics'),
   'blog'      => array('enabled' => true,'class' => 'CCBlog'),
   'page'      => array('enabled' => true,'class' => 'CCPage'),
   'theme'     => array('enabled' => true,'class' => 'CCTheme'),
@@ -143,7 +144,7 @@ $ly->config['theme'] = array(
     	  //  'blog'       => array('text'=>'Blogg',             'altText'=>'Blogg',     'url'=>'blog'),
     	  //'theme'      => array('text'=>'Themes',              'altText'=>'Themes',    'url'=>'theme'),
     	  //'modules'    => array('text'=>'Moduls',              'altText'=>'Moduls',    'url'=>'modules'),
-    	    'Bilder'     => array('text'=>'Bilder',              'altText'=>'Bilder',    'url'=>'my/pics'),
+    	    'Bilder'     => array('text'=>'Bilder',              'altText'=>'Bilder',    'url'=>'pics'),
     	  'Historia'     => array('text'=>'Historia',            'altText'=>'Historia',  'url'=>'my/history'),
     	  'Gästbok'      => array('text'=>'Gästbok',              'altText'=>'Gästbok',  'url'=>'my/myGuestbook'),
     	  'Om'           => array('text'=>'Om',                   'altText'=>'Om',       'url'=>'my/about'),

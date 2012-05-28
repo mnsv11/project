@@ -13,7 +13,8 @@
 to be able to write and create files.</p>
 <blockquote>
 <code>cd project; chmod 777 site/data/.ht.sqlite</code><br>
-<code>cd project; chmod 777 themes/grid</code>
+<code>cd project; chmod 777 themes/grid</code><br>
+<code>cd project; chmod 777 site/themes/mytheme</code>
 <P>Change in .htaccess(if you use this on student server) </p>
 
 </blockquote>

@@ -43,16 +43,6 @@ class CCMycontroller extends CObject implements IController {
   }
   
   
-  /**
-   * Pictures.
-   */
-    public function pics() {    
-    $modules = new CMModules();
-    $this->views->SetTitle('Bilder');
-    $this->views->AddInclude(__DIR__ . '/pics.tpl.php', array('img'=>$this->picParth), 'leftbar');
-  
-    
-  }
 /**
    * History.
    */

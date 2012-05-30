@@ -22,6 +22,7 @@ class CCModules extends CObject implements IController {
     $this->views->SetTitle('Manage Modules');
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('controllers'=>$controllers), 'primary');
     $this->views->AddInclude(__DIR__ . '/sidebar.tpl.php', array('modules'=>$allModules), 'sidebar');
+
   }
 
   
@@ -29,6 +30,10 @@ class CCModules extends CObject implements IController {
    * Show a index-page and display what can be done through this controller.
    */
   public function Install() {
+  
+	
+
+  	  
     $modules = new CMModules();
     $results = $modules->Install();
     $allModules = $modules->ReadAndAnalyse();

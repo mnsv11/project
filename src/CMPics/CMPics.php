@@ -46,8 +46,9 @@ class CMPics extends CObject implements IHasSQL, ArrayAccess, IModule {
     $order_by     = isset($args['order-by'])    ? $args['order-by'] : 'id';    
     $queries = array(
       'drop table pictures'      => "DROP TABLE IF EXISTS Pictures;",
-      'create table pictures'    => "CREATE TABLE IF NOT EXISTS Pictures (id INTEGER PRIMARY KEY, nameSmall TEXT, name TEXT,sub TEXT,comments TEXT, data TEXT, idUser INT, created DATETIME default (datetime('now')));",
-      'insert pictures'          => 'INSERT INTO Pictures (nameSmall,name,sub,comments,data,idUser) VALUES (?,?,?,?,?,?);',
+      'create table pictures'    => "CREATE TABLE IF NOT EXISTS Pictures (id INTEGER PRIMARY KEY, name TEXT,sub TEXT,comments TEXT, data TEXT, idUser INT, created DATETIME default (datetime('now')));",
+      'insert pictures'          => 'INSERT INTO Pictures (name,sub,comments,data,idUser) VALUES (?,?,?,?,?);',
+      'remove pictures'          => 'DELETE FROM Pictures WHERE (name=?);',
       'select * by id'           => 'SELECT c.*, u.acronym as owner FROM Pictures AS c INNER JOIN User as u ON c.idUser=u.id WHERE c.id=?;',
       'select * by name'         => "SELECT c.*, u.acronym as owner FROM Pictures AS c INNER JOIN User as u ON c.idUser=u.id WHERE type=? ORDER BY {$order_by} {$order_order};",
       'select *'                 => 'SELECT * FROM Pictures;'
@@ -69,7 +70,7 @@ class CMPics extends CObject implements IHasSQL, ArrayAccess, IModule {
         try {
           $this->db->ExecuteQuery(self::SQL('drop table pictures'));
           $this->db->ExecuteQuery(self::SQL('create table pictures'));
-          $this->db->ExecuteQuery(self::SQL('insert pictures'), array('gsxr1000sv_small.png', 'gsxr1000sv.png','GSXR1000','Hoj som jag vill ha', '<table>
+          $this->db->ExecuteQuery(self::SQL('insert pictures'), array('gsxr1000sv.png','GSXR1000','Hoj som jag vill ha', '<table>
    <thead>
       <tr>
          <th>Chassis</th>
@@ -192,7 +193,7 @@ class CMPics extends CObject implements IHasSQL, ArrayAccess, IModule {
       
    </tbody>
 </table>', $this->user['id']));
-          $this->db->ExecuteQuery(self::SQL('insert pictures'), array('GSXR1100_93_small.png', 'GSXR1100_93.png','GSXR1100','Hoj som jag haft', '<table>
+          $this->db->ExecuteQuery(self::SQL('insert pictures'), array('GSXR1100_93.png','GSXR1100','Hoj som jag haft', '<table>
    <tbody>
       <tr>
          <td id=tdmain>Overall Length</td>
@@ -230,7 +231,7 @@ class CMPics extends CObject implements IHasSQL, ArrayAccess, IModule {
 
    </tbody>
 </table>', $this->user['id']));
-          $this->db->ExecuteQuery(self::SQL('insert pictures'), array('GSX750ES_blue_84_small.png', 'GSX750ES_blue_84.png','GSX750ES','Hoj som jag har', '<table>
+          $this->db->ExecuteQuery(self::SQL('insert pictures'), array('GSX750ES_blue_84.png','GSX750ES','Hoj som jag har', '<table>
    <tbody>
       <tr>
          <td id=tdmain>Overall Length</td>
@@ -289,8 +290,7 @@ class CMPics extends CObject implements IHasSQL, ArrayAccess, IModule {
    */
   public function Save() {
     $msg = null;
-      $this->db->ExecuteQuery(self::SQL('insert pictures'), array($this['nameSmall'], $this['name'],$this['sub'],$this['comments'], $this['data'], $this->user['id']));
-      echo $this['picture'];
+      $this->db->ExecuteQuery(self::SQL('insert pictures'), array($this['name'],$this['sub'],$this['comments'], $this['data'], $this->user['id']));
       $this['id'] = $this->db->LastInsertId();
       $msg = 'created';
     $rowcount = $this->db->RowCount();
@@ -302,6 +302,24 @@ class CMPics extends CObject implements IHasSQL, ArrayAccess, IModule {
     return $rowcount === 1;
   }
   
+  
+   /**
+   * remove Pics.
+   *
+   * @returns boolean true if success else false.
+   */
+  public function Remove() {
+    $msg = null;
+      $this->db->ExecuteQuery(self::SQL('remove pictures'), array($this['name']));
+      $msg = 'removed';
+    $rowcount = $this->db->RowCount();
+    if($rowcount) {
+      $this->AddMessage('success', "Successfully {$msg} pictures");
+    } else {
+      $this->AddMessage('error', "Failed to {$msg} pictures");
+    }
+    return $rowcount === 1;
+  }
   
   
     /**

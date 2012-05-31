@@ -50,12 +50,13 @@ EOD;
   return <<<EOD
 
 
-<a href="http://www.eumoppenomc.se/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/eumoppen.png" width="200" height="50" border="0" alt="Eu moppen"></a> 
-<a href="http://www.claessonsmotor.se/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/claessons.png" width="200" height="50" border="0" alt="Claessonsmotor"></a>
-<a href="http://www.mcdoktorn.se//" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/mcdok.gif" width="200" height="60" border="0" alt="Mc doktorn"></a>
-<a href="http://http://www.handelsboden.com/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/hb.png" width="200" height="80" border="0" alt="Handelsboden"></a>
-<a href="http://http://www.24mx.se/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/24mx.jpg" width="200" height="140" border="0" alt="24mx"></a>
-<a href="http://http://www.swedenrock.com/" target=_blank><img src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/swedenrock.gif" width="200" height="300" border="0" alt="Sweden Rock"></a>
+<a href="http://www.eumoppenomc.se/" target=_blank><img src="site/themes/mytheme/eumoppen.png" width="200" height="50" border="0" alt="Eu moppen"></a> 
+<a href="http://www.claessonsmotor.se/" target=_blank><img src="site/themes/mytheme/claessons.png" width="200" height="50" border="0" alt="Claessonsmotor"></a>
+<a href="http://www.mcdoktorn.se//" target=_blank><img src="site/themes/mytheme/mcdok.gif" width="200" height="60" border="0" alt="Mc doktorn"></a>
+<a href="http://http://www.handelsboden.com/" target=_blank><img src="site/themes/mytheme/hb.png" width="200" height="80" border="0" alt="Handelsboden"></a>
+<a href="http://http://www.24mx.se/" target=_blank><img src="site/themes/mytheme/24mx.jpg" width="200" height="140" border="0" alt="24mx"></a>
+<a href="http://http://www.swedenrock.com/" target=_blank><img src="site/themes/mytheme/swedenrock.gif" width="200" height="300" border="0" alt="Sweden Rock"></a>
+<a href="site/themes/mytheme/SavateSommar2012.pdf" target=_blank><img src="site/themes/mytheme/SavateSommar2012.jpg" width="200" height="300" border="0" alt="Sweden Rock"></a>
 EOD;
 }
 

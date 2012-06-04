@@ -19,10 +19,10 @@ class CFormContent extends CForm {
     $this->content = $content;
     $save = isset($content['id']) ? 'save' : 'create';
     $this->AddElement(new CFormElementHidden('id', array('value'=>$content['id'])))
-         ->AddElement(new CFormElementText('title', array('value'=>$content['title'])))
+         ->AddElement(new CFormElementText('title', array('value'=>$content['title'],'required'=>true)))
          ->AddElement(new CFormElementHidden('key', array('value'=>$content['title'])))
          ->AddElement(new CFormElementTextarea('data', array('label'=>'Content:', 'value'=>$content['data'])))
-         ->AddElement(new CFormElementText('type', array('value'=>$content['type'])))
+         ->AddElement(new CFormElementHidden('type', array('value'=>"page")))
          ->AddElement(new CFormElementHidden('filter', array('value'=>"bbcode")))
          ->AddElement(new CFormElementSubmit($save, array('callback'=>array($this, 'DoSave'), 'callback-args'=>array($content))));
 
@@ -41,6 +41,7 @@ class CFormContent extends CForm {
     $content['data']  = $form['data']['value'];
     $content['type']  = $form['type']['value'];
     $content['filter'] = $form['filter']['value'];
+   
     return $content->Save();
   }
   

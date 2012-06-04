@@ -16,6 +16,7 @@ class CObject {
   protected $views;
   protected $session;
   protected $user;
+  
 
   /**
    * Constructor, can be instantiated by sending in the $ly reference.
@@ -110,6 +111,7 @@ class CObject {
   protected function CreateUrl($urlOrController=null, $method=null, $arguments=null) {
     return $this->request->CreateUrl($urlOrController, $method, $arguments);
   }
+
 
 
 }

@@ -1,7 +1,6 @@
-<?php if($usercheck['groups'][0]['idGroups'] == "1"):?>
+<div id=insidePrime>
 <h2>Skapa ett användar konto</h2>
 
 <?=$form?>
-<?php else:?>
-<h3>Du har inte behörighet för denna sidan</h3>
-<?php endif;?>
+
+</div>

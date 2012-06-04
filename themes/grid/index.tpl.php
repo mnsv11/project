@@ -9,7 +9,7 @@
 </head>
 
 <body id=<?=$title?>>
-
+<div id='all-wrap'>
 <?php if($showMenu == "true"): ?>
 
 	<fieldset class='menuField'>
@@ -59,14 +59,15 @@
   </div>
 </div>
 <?php endif; ?>
+
 <div id='outer-wrap-main'>
 	
 
     <div id='middle-wrap-main'>
 	  <div id='inner-wrap-main'>
 	    <div id='leftbar'><?=render_views('leftbar')?></div>
-	    <div id='primary'><?=get_messages_from_session()?><?=@$main?><?=render_views('primary')?><?=render_views()?></div>
-	    <div id='rightbar'><?=render_views('rightbar')?><?=reklam()?></div>
+	    <div id='primary'><?=@$main?><?=render_views('primary')?><?=render_views()?></div>
+	    <div id='rightbar'><div id='message'><?=get_messages_from_session()?></div><?=render_views('rightbar')?><?=reklam()?></div>
 	  </div>
    </div>
 </div>
@@ -80,7 +81,7 @@
   </div>
 </div>
 <?php endif; ?>
-
+</div>
 <div id='outer-wrap-footer'>
   <?php if(region_has_content('footer-column-one', 'footer-column-two', 'footer-column-three', 'footer-column-four')): ?>
   <div id='inner-wrap-footer-column'>
@@ -94,7 +95,6 @@
     <div id='footer'><?=render_views('footer')?><?=$footer?><?=get_tools()?><?=get_debug()?></div>
   </div>
 </div>
-
 </body>
 </html> 
 

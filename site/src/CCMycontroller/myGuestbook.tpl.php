@@ -1,3 +1,4 @@
+<div id=insidePrime>
 <h1>Gästbok</h1>
 
 <?=$form->GetHTML();?>
@@ -10,4 +11,4 @@
   <p><?=htmlent($val['entry'])?></p>
 </div>
 <?php endforeach;?>
-
+</div>                            

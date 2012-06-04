@@ -21,10 +21,11 @@ class CCPage extends CObject implements IController {
   public function Index() {
     $content = new CMContent();
     $this->views->SetTitle('Page');
+    $this->session->storePage('../page');
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(
                   'contents' => $content->ListAll(array('type'=>'page', 'order-by'=>'id', 'order-order'=>'DESC')),
                   'usercheck' => $this->session->GetAuthenticatedUser(),
-                ));
+                ),'leftbar');
    }
 
   
@@ -37,20 +38,27 @@ class CCPage extends CObject implements IController {
   public function View($id=null) {
   	  
     $content = new CMContent($id);
+    if($content['type']=="komment")
+    {
+    	    $this->AddMessage('notice', 'Sidan kan inte visas');
+    	    $this->RedirectToController();
+    		    
+    }
     $form = new CFormPage($content);
+    $this->session->storePage('../page/view/'. $id);
     $status = $form->Check();
     if($status === false) {
       $this->AddMessage('notice', 'The form could not be processed.');
-      $this->RedirectToControllerMethod();
+      $this->RedirectToController();
     } else if($status === true) {
-      $this->RedirectToControllerMethod();
+      $this->RedirectToController('view/' . $id);
     }  
 
     $this->views->SetTitle('Page: '.htmlEnt($content['title']));
     $this->views->AddInclude(__DIR__ . '/view.tpl.php', array(
                   'contents' => $content,'usercheck' => $this->session->GetAuthenticatedUser(),
                   'entries'=>$content->ListAll(array('type'=>'komment', 'order-by'=>'type', 'order-order'=>'DESC')),'form'=>$form,
-                ),'primary');
+                ),'leftbar');
  }
   
 
@@ -74,11 +82,11 @@ class CFormPage extends CForm {
     parent::__construct();
     $this->object = $object;
 
-    $this->AddElement(new CFormElementTextarea('data', array('label'=>'Add entry:')))
+    $this->AddElement(new CFormElementTextarea('data', array('id'=>"boooba", 'label'=>'kommentar:','value'=>"")))
     	 ->AddElement(new CFormElementHidden('type', array('value'=>"komment")))
     	 ->AddElement(new CFormElementHidden('key', array('value'=>$object['id'])))
     	 ->AddElement(new CFormElementHidden('id', array('value'=>"")))
-    	 ->AddElement(new CFormElementHidden('filter', array('value'=>"plain")))
+    	 ->AddElement(new CFormElementHidden('filter', array('value'=>"bbcode")))
     	 ->AddElement(new CFormElementHidden('title', array('value'=>"komment")))
          ->AddElement(new CFormElementSubmit('Spara', array('callback'=>array($this, 'DoSave'), 'callback-args'=>array($object))));
   }

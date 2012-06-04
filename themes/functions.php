@@ -187,6 +187,7 @@ function filter_data($data, $filter) {
 
   return CMContent::Filter($data, $filter);
 }
+
 /**
  * Display diff of time between now and a datetime. 
  *

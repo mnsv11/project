@@ -1,3 +1,4 @@
+<div id=insidePrime>
 <?php if($usercheck['groups'][0]['idGroups'] == "1"):?>
 <?php if($content['created']): ?>
   <h1>Edit Content</h1>
@@ -29,3 +30,4 @@
 <?php else:?>
 <h3>Du har inte behörighet för denna sidan</h3>
 <?php endif;?>
+</div>

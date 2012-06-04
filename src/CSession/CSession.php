@@ -9,9 +9,11 @@ class CSession {
   /**
    * Members
    */
+
   private $key;
   private $data = array();
   private $flash = null;
+  
   
 
   /**
@@ -94,6 +96,20 @@ class CSession {
       }
     }
   }
+      public function storePage($page=null)
+  {
+  	  $_SESSION[$this->lastPage] = $page;
+  	  
+  	  
+  }
+  
+  public function getPage()
+  {
+  	
+  	return $_SESSION[$this->lastPage];
+  	
+  }
+
 
 
 } 

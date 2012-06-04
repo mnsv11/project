@@ -26,6 +26,7 @@ class CCMycontroller extends CObject implements IController {
   public function Index() {    
     $modules = new CMModules();
     $content = new CMContent();
+    $this->session->storePage('../');
     $this->views->SetTitle('Index');
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('img'=>$this->picParth . 'GSXR1000.png','contents' => $content->ListAll(array('type'=>'page', 'order-by'=>'id', 'order-order'=>'DESC'))), 'leftbar');
 
@@ -36,6 +37,7 @@ class CCMycontroller extends CObject implements IController {
    */
     public function news() {    
     $modules = new CMModules();
+    $this->session->storePage('../my/news');
     $this->views->SetTitle('Rss');
     $this->views->AddInclude(__DIR__ . '/rightbar.tpl.php', array('img'=>$this->picParth . 'webBikeWorld5.jpg'), 'primary');
     $this->views->AddInclude(__DIR__ . '/leftbar.tpl.php', array('img'=>$this->picParth . 'smc_logo.png'), 'leftbar');
@@ -48,8 +50,9 @@ class CCMycontroller extends CObject implements IController {
    */
     public function history() {    
     $modules = new CMModules();
+    $this->session->storePage('../my/history');
     $this->views->SetTitle('Historia');
-    $this->views->AddInclude(__DIR__ . '/historia.tpl.php', array(), 'primary');
+    $this->views->AddInclude(__DIR__ . '/historia.tpl.php', array(), 'leftbar');
 
   }
   
@@ -58,8 +61,9 @@ class CCMycontroller extends CObject implements IController {
    */
       public function about() {    
     $modules = new CMModules();
+    $this->session->storePage('../my/about');
     $this->views->SetTitle('Om');
-    $this->views->AddInclude(__DIR__ . '/om.tpl.php', array('img'=>$this->picParth . 'mig.jpg'), 'primary');
+    $this->views->AddInclude(__DIR__ . '/om.tpl.php', array('img'=>$this->picParth . 'mig.jpg'), 'leftbar');
 
   }
   
@@ -81,6 +85,7 @@ class CCMycontroller extends CObject implements IController {
   public function myGuestbook() {
     $guestbook = new CMGuestbook();
     $form = new CFormMyGuestbook($guestbook);
+    $this->session->storePage('../my/myGuestbook');
     $status = $form->Check();
     if($status === false) {
       $this->AddMessage('notice', 'The form could not be processed.');
@@ -94,7 +99,7 @@ class CCMycontroller extends CObject implements IController {
             'entries'=>$guestbook->ReadAll(), 
             'form'=>$form,
             
-         ));
+         ),'leftbar');
   }
   
 }

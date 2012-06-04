@@ -1,3 +1,4 @@
+<div id=insidePrime>
 <script src="http://www.student.bth.se/~mnsv11/project/site/src/CCMycontroller/js/jquery-1.7.2.min.js"></script>
 <script src="http://www.student.bth.se/~mnsv11/project/site/src/CCMycontroller/js/lightbox.js"></script>
 <link href="http://www.student.bth.se/~mnsv11/project/site/src/CCMycontroller/css/lightbox.css" rel="stylesheet" />
@@ -25,7 +26,7 @@
  <tr>
    </tbody>
 </table>
-
+</div>
   
   
   

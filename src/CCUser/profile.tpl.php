@@ -1,3 +1,5 @@
+<div id=insidePrime>
+<div style="float:right;padding-right:150px;">
 <h1>User Profile</h1>
 <p>You can view and update your profile information.</p>
 
@@ -13,4 +15,5 @@
 <?php else: ?>
   <p>User is anonymous and not authenticated.</p>
 <?php endif; ?>
-
+</div>
+</div>

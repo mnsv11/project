@@ -49,7 +49,7 @@ class CCContent extends CObject implements IController {
                   'content'=>$content, 
                   'form'=>$form,
                   'usercheck' => $this->session->GetAuthenticatedUser(),
-                ));
+                ),'leftbar');
   }
   
 

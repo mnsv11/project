@@ -23,7 +23,7 @@ class CCUser extends CObject implements IController {
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(
                   'is_authenticated'=>$this->user['isAuthenticated'], 
                   'user'=>$this->user,
-                ));
+                ),'leftbar');
   }
   
 
@@ -39,7 +39,7 @@ class CCUser extends CObject implements IController {
                   'is_authenticated'=>$this->user['isAuthenticated'], 
                   'user'=>$this->user,
                   'profile_form'=>$form->GetHTML(),
-                ));
+                ),'leftbar');
   }
   
 
@@ -84,7 +84,7 @@ class CCUser extends CObject implements IController {
                   'login_form' => $form,
                   'allow_create_user' => CLydia::Instance()->config['create_new_users'],
                   'create_user_url' => $this->request->CreateUrl(null, 'create'),
-                ));
+                ),'leftbar');
   }
   /**
    * Perform a login of the user as callback on a submitted form.
@@ -92,8 +92,9 @@ class CCUser extends CObject implements IController {
   public function DoLogin($form = null) {
   	 
     if($this->user->Login($form['acronym']['value'], $form['password']['value'])) {
-      $this->session->AddMessage('success', "Welcome {$this->user['name']}.");
-      $this->RedirectToController('profile');
+    	    $this->session->AddMessage('success', "Welcome {$this->user['name']}.");
+      
+      $this->RedirectToController($this->session->getPage());
     } else {
       $this->session->AddMessage('notice', "Failed to login, user does not exist or password does not match.");
       $this->RedirectToController('login');      
@@ -106,12 +107,19 @@ class CCUser extends CObject implements IController {
    */
   public function Create() {
     $form = new CFormUserCreate($this);
+    if($this->session->GetAuthenticatedUser() != "1")
+    {
+    	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
+    	  $this->RedirectToController('login');
+    	     	    
+    }
+    
     if($form->Check() === false) {
       $this->session->AddMessage('notice', 'You must fill in all values.');
       $this->RedirectToController('Create');
     }
     $this->views->SetTitle('Create user');
-    $this->views->AddInclude(__DIR__ . '/create.tpl.php', array('form' => $form->GetHTML(),'usercheck' => $this->session->GetAuthenticatedUser()));     
+    $this->views->AddInclude(__DIR__ . '/create.tpl.php', array('form' => $form->GetHTML(),'usercheck' => $this->session->GetAuthenticatedUser()),'leftbar');     
   }
   
    
@@ -145,12 +153,18 @@ class CCUser extends CObject implements IController {
    */
       public function Remove() {
     $form = new CFormUserRemove($this);
+    if($this->session->GetAuthenticatedUser() != "1")
+    {
+    	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
+    	  $this->RedirectToController('login');
+    	     	    
+    }
     if($form->Check() === false) {
       $this->session->AddMessage('notice', 'You must fill in all values.');
       $this->RedirectToController('Remove');
     }
     $this->views->SetTitle('Remove user');
-    $this->views->AddInclude(__DIR__ . '/remove.tpl.php', array('form' => $form->GetHTML(),'usercheck' => $this->session->GetAuthenticatedUser()));     
+    $this->views->AddInclude(__DIR__ . '/remove.tpl.php', array('form' => $form->GetHTML(),'usercheck' => $this->session->GetAuthenticatedUser()),'leftbar');     
   }
   
       /**
@@ -176,11 +190,18 @@ class CCUser extends CObject implements IController {
    * get users.
    */
       public function getUsers() {
+      	      if($this->session->GetAuthenticatedUser() != "1")
+    {
+    	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
+    	  $this->RedirectToController('login');
+    	     	    
+    }
     $this->views->SetTitle('Show users');
+    
     
     $this->views->AddInclude(__DIR__ . '/showUsers.tpl.php', array('usercheck' => $this->session->GetAuthenticatedUser(), 
     	    			       'users' => $this->user->getUsers(),
-    	    			       'userGroup' => $this->user->getUser2group()));     
+    	    			       'userGroup' => $this->user->getUser2group()),'leftbar');     
   }
 
   /**

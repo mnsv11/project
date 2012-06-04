@@ -161,7 +161,7 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;
  *
  */
 .tablecell() {display:table-cell;vertical-align:middle;text-align:center;}
-#outer-wrap-header{height:@magic-number*4;margin-top:@magic-number/2;margin-bottom:@magic-number/2;}
+#outer-wrap-header{background-color:@bgcolor1;height:@magic-number*4;margin-top:@magic-number/2;margin-bottom:@magic-number/2;}
 #inner-wrap-header{.wrap();}
 #header{.column(12);}
 
@@ -214,7 +214,7 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;
  *
  */
 #middle-wrap-main{margin-bottom:@magic-number;
-		  width:@total-width+31px;
+		  width:@total-width;
 		  margin:0 auto;
 		  border:1px solid black;
 		  margin-bottom:20px;
@@ -235,6 +235,7 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;
 #leftbar{.column(3);}
 #primary{.column(6);}
 #rightbar{.column(3);}
+
 
 
 /** --------------------------------------------------------------
@@ -400,9 +401,7 @@ div.menu a {padding: 0.3em 1em 0 1em;color: #000000;
 	}
 
 	       
-	       
-	       
-	       
+#insidePrime{margin-left:70px;}     
 	       
 	       
 
@@ -410,16 +409,16 @@ div.menu a {padding: 0.3em 1em 0 1em;color: #000000;
  * User feedback message wrappers.
  */
 .error, .alert, .warning, .notice, .success, .info { 
-padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; border-radius: 30px; }
+padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; border-radius: 30px;text-align:center;}
 
-.error, .alert { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
-.notice, .warning { background: #FA0008; color: #514721; border-color: #ffd324; }
-.success       { background: #2FFF05; color: #264409; border-color: #c6d880; }
-.info          { background: #d5edf8; color: #205791; border-color: #92cae4; }
-.error a, .alert a { color: #8a1f11; }
-.notice a, .warning a { color: #514721; }
-.success a         { color: #264409; }
-.info a            { color: #205791; }
+.error, .alert { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4;text-align:center;}
+.notice, .warning { background: #FA0008; color: #514721; border-color: #ffd324;text-align:center;}
+.success       { background: #2FFF05; color: #264409; border-color: #c6d880;text-align:center;}
+.info          { background: #d5edf8; color: #205791; border-color: #92cae4;text-align:center;}
+.error a, .alert a { color: #8a1f11;text-align:center;}
+.notice a, .warning a { color: #514721;text-align:center;}
+.success a         { color: #264409;text-align:center;}
+.info a            { color: #205791;text-align:center;}
 
 
 /** --------------------------------------------------------------

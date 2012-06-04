@@ -1,3 +1,4 @@
+<div id=insidePrime>
 <H3 id=indexNews>Välkommen till en sida för oss som gillar Suzuki sporthojar</h3>
 <div id=indexNews>
 <h5 id=indexNews>Senaste nyheten</h5>
@@ -11,4 +12,4 @@
 <img id=indexNews src=<?=$img?> width="500" height="330" alt="Mc" border="0">
 
 </p> 
-
+</div>

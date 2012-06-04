@@ -1,3 +1,4 @@
+<div id=insidePrime>
 <br>
 <h3>Historia</h3>
 <p>1909 grundade Michio Suzuki Suzuki Loom Company i Hamamatsu i Japan. 
@@ -47,4 +48,5 @@ I mitten av 80-talet lanserades GSX-R-serien där Suzuki var pionjärer när det
 tillverka och sälja motorcyklar för gatbruk som direkt hämtade teknologi från 
 roadracing-maskiner[källa behövs]. Denna modellserie har varit mycket framgångsrik 
 och tillhör toppskiktet bland försålda modeller än idag[källa </p>
+</div>
 

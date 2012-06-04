@@ -69,8 +69,11 @@ class CFormElement implements ArrayAccess{
     
    if($type && $this['type'] == 'submit') {
         return "<p><input id='$id'{$type}{$class}{$name}{$value}{$autofocus}{$readonly} /></p>\n";
-    } else if($type && $this['type'] == 'textarea') {
+   
+   } else if($type && $this['type'] == 'textarea') {
         return "<p><label for='$id'>$label</label><br><textarea id='$id'{$type}{$class}{$name}{$autofocus}{$readonly}>{$onlyValue}</textarea></p>\n"; 
+      
+        
     } else if($type && $this['type'] == 'hidden') {
         return "<input id='$id'{$type}{$class}{$name}{$value} />\n"; 
     } else {
@@ -145,6 +148,24 @@ class CFormElementText extends CFormElement {
     $this->UseNameAsDefaultLabel();
   }
 }
+
+
+class CFormElementSelect extends CFormElement {
+  /**
+   * Constructor
+   *
+   * @param string name of the element.
+   * @param array attributes to set to the element. Default is an empty array.
+   */
+  public function __construct($name, $attributes=array()) {
+    parent::__construct($name, $attributes);
+    $this['type'] = 'checkbox';
+    $this->UseNameAsDefaultLabel();
+    
+  }
+}
+
+
 
 class CFormElementUpload extends CFormElement{
 
@@ -356,7 +377,7 @@ EOD;
         }
       }
     } else if(isset($_SESSION['form-failed'])) {
-      foreach($_SESSION['form-failed'] as $key => $val) {
+      foreach($_SESSION['form-failed'] as $key => $val) {       
         $this[$key]['value'] = $val['value'];
         if(isset($val['validation-messages'])) {
           $this[$key]['validation-messages'] = $val['validation-messages'];

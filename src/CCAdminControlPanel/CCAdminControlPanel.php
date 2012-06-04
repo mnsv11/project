@@ -21,7 +21,7 @@ class CCAdminControlPanel extends CObject implements IController {
   public function Index() {
    
     $this->views->SetTitle('ACP: Admin Control Panel');
-    $this->views->AddInclude(__DIR__ . '/index.tpl.php',array('usercheck' => $this->session->GetAuthenticatedUser()));
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php',array('usercheck' => $this->session->GetAuthenticatedUser()),'leftbar');
   }
  
 

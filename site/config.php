@@ -35,8 +35,8 @@ $ly->config['installed'] = array('check' => 'false');
  * which is called in the frontcontroller phase from index.php.
  */
 $ly->config['controllers'] = array(
-  'index'     => array('enabled' => true,'class' => 'CCIndex'),
-  //'index'     => array('enabled' => true,'class' => 'CCMycontroller'),
+  //'index'     => array('enabled' => true,'class' => 'CCIndex'),
+  'index'     => array('enabled' => true,'class' => 'CCMycontroller'),
   'developer' => array('enabled' => false,'class' => 'CCDeveloper'),
   'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
   'user'      => array('enabled' => true,'class' => 'CCUser'),
@@ -48,6 +48,7 @@ $ly->config['controllers'] = array(
   'theme'     => array('enabled' => true,'class' => 'CCTheme'),
   'modules'   => array('enabled' => true,'class' => 'CCModules'),
   'my'        => array('enabled' => true,'class' => 'CCMycontroller'),
+  'forum'     => array('enabled' => true,'class' => 'CCForum'),
 
 );
 
@@ -147,7 +148,9 @@ $ly->config['theme'] = array(
     	    'Bilder'     => array('text'=>'Bilder',              'altText'=>'Bilder',    'url'=>'pics'),
     	  'Historia'     => array('text'=>'Historia',            'altText'=>'Historia',  'url'=>'my/history'),
     	  'Gästbok'      => array('text'=>'Gästbok',              'altText'=>'Gästbok',  'url'=>'my/myGuestbook'),
+    	  'forum'        => array('text'=>'Forum',                'altText'=>'Forum',    'url'=>'forum'),
     	  'Om'           => array('text'=>'Om',                   'altText'=>'Om',       'url'=>'my/about'),
+    	  
     	    ),
   ),
 );

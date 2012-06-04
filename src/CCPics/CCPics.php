@@ -22,6 +22,7 @@ class CCPics extends CObject implements IController {
    */
   public function Index($id=null) {    
     $pictures = new CMPics($id);
+    $this->session->storePage('../pics');
     $this->views->SetTitle('Bilder');
     $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('pictures' => $pictures->listAll(),'usercheck' => $this->session->GetAuthenticatedUser(),), 'primary');
 
@@ -37,6 +38,12 @@ class CCPics extends CObject implements IController {
    * Add pics.
    */
   public function addPics($id=null) {
+    if($this->session->GetAuthenticatedUser() != "1")
+    {
+    	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
+    	  $this->RedirectToController('../user/login');
+    	     	    
+    }
    $pictures = new CMPics($id);
     $form = new CFormAddPics($pictures);
     $status = $form->Check();
@@ -59,6 +66,12 @@ class CCPics extends CObject implements IController {
    * Remove pics.
    */
   public function removePics($id=null) {
+  	  if($this->session->GetAuthenticatedUser() != "1")
+    {
+    	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
+    	  $this->RedirectToController('../user/login');
+    	     	    
+    }
    $pictures = new CMPics($id);
     $form = new CFormRemovePics($pictures);
     $status = $form->Check();

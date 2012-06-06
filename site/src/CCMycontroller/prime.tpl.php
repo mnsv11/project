@@ -1,12 +1,11 @@
 <div id=insidePrime>
-<div style="float:left;margin-right:50px;margin-left:50px;width:220px;">
 <br>
 <br><p>
-<img style="padding-top:10px;" src=<?=$img?> width="190" height="50" alt="logo" border="0">
+<img style="padding-top:15px;float" src=<?=$img?> width="180" height="40" alt="logo" border="0">
 </p>
 
 
-<?php $xml = simplexml_load_file("http://www.webbikeworld.com/motorcycles/rss.xml");
+<?php $xml = simplexml_load_file("http://www.alltommc.se/rss/rss.php");
 $count = 0;
 '<div>';
 foreach ($xml->channel->item as $item) :
@@ -21,5 +20,5 @@ if($count < 10){?>
 endforeach;
 '</div>';
 ?>
-</div>
+
 </div>

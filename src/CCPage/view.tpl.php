@@ -1,6 +1,6 @@
 <div id=insidePrime>
 <?php if($contents != null):?>
-<div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;'>
+<div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;width:80%'>
   <?php foreach($contents as $val):?>
 
 	  <?php if($contents['title']): ?>
@@ -43,7 +43,7 @@ foreach($entries as $val)
 
 <?php foreach($entries as $val):?>
   <?php if($val['key'] == $contents['id']):?>
-<div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;'>
+<div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;width:80%'>
   <p><?=filter_data($val['data'], $val['filter'])?></p>
   <p>At: <?=$val['created']?></p>
 </div>

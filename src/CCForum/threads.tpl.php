@@ -1,7 +1,7 @@
 <div id=insidePrime>
 <h2>Trådar</h2>
 
-<div style='background-color:#C7C7C7;border:1px solid #ccc;'>
+<div style='background-color:#C7C7C7;border:1px solid #ccc;width:95%'>
 <h4 style='text-align:center; margin-top:10px;'><?php echo $forum['title'];?></h4>
 </div>
 <?php if($entries != null):?>
@@ -9,7 +9,7 @@
 
 <?php foreach($entries as $val):?>
   <?php if($val['key'] == $forum['id']):?>
-<div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding-top:10px;'>
+<div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding-top:10px;width:95%'>
 <table id=forum>
   <tr>
   	<th id=forumTh><img style="height:50px; width: 67px;margin-left:15px;" src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/wheel.png" alt=""></th>
@@ -18,7 +18,7 @@
   	    <?php $count= 1;
     	foreach($entries as $check)
     	{
-    		if($check['key'] == $val['id'])
+    		if($check['key'] == $val['id'] && $check['deleted'] == "")
     		{
     			$count++;		
     		}
@@ -33,7 +33,7 @@
 <?php endforeach;?>
   
     
-    <h1> </h1>
+    <h1 style="width:95%"> </h1>
   <?php endforeach; ?>
   
 <?php else:?>

@@ -3,7 +3,7 @@
 <link href="site/src/CCMycontroller/css/lightbox.css" rel="stylesheet" />
 
 
-<fieldset style="width:900px;margin-left:150px;">
+<fieldset style="width:900px;margin-left:200px;">
 <table style="width:900px;">
 
 <?php foreach($pictures as $val):?>

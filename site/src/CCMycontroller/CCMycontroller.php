@@ -28,8 +28,8 @@ class CCMycontroller extends CObject implements IController {
     $content = new CMContent();
     $this->session->storePage('../');
     $this->views->SetTitle('Index');
-    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('img'=>$this->picParth . 'GSXR1000.png','contents' => $content->ListAll(array('type'=>'page', 'order-by'=>'id', 'order-order'=>'DESC'))), 'leftbar');
-
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('img'=>$this->picParth . 'GSXR1000.png'), 'leftbar');
+    $this->views->AddInclude(__DIR__ . '/indexNews.tpl.php', array('contents' => $content->ListAll(array('type'=>'page', 'order-by'=>'id', 'order-order'=>'DESC'))), 'rightbar');
   }
 
   /**
@@ -40,6 +40,7 @@ class CCMycontroller extends CObject implements IController {
     $this->session->storePage('../my/news');
     $this->views->SetTitle('Rss');
     $this->views->AddInclude(__DIR__ . '/rightbar.tpl.php', array('img'=>$this->picParth . 'webBikeWorld5.jpg'), 'primary');
+    $this->views->AddInclude(__DIR__ . '/prime.tpl.php', array('img'=>$this->picParth . 'alltommc.jpg'), 'primary');
     $this->views->AddInclude(__DIR__ . '/leftbar.tpl.php', array('img'=>$this->picParth . 'smc_logo.png'), 'leftbar');
     
   }

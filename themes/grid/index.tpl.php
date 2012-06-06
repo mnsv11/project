@@ -28,7 +28,9 @@
 		   
 		</div>
 	</fieldset>
+	<hr style="color:white;">
 	<?php endif; ?>
+	<div id='message'><?=get_messages_from_session()?></div>
 <div id='outer-wrap-header'>
   <div id='inner-wrap-header'>
     <div id='header'>
@@ -67,7 +69,7 @@
 	  <div id='inner-wrap-main'>
 	    <div id='leftbar'><?=render_views('leftbar')?></div>
 	    <div id='primary'><?=@$main?><?=render_views('primary')?><?=render_views()?></div>
-	    <div id='rightbar'><div id='message'><?=get_messages_from_session()?></div><?=render_views('rightbar')?><?=reklam()?></div>
+	    <div id='rightbar'><?=render_views('rightbar')?></div>
 	  </div>
    </div>
 </div>

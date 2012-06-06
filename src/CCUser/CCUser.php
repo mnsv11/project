@@ -84,7 +84,7 @@ class CCUser extends CObject implements IController {
                   'login_form' => $form,
                   'allow_create_user' => CLydia::Instance()->config['create_new_users'],
                   'create_user_url' => $this->request->CreateUrl(null, 'create'),
-                ),'leftbar');
+                ),'primary');
   }
   /**
    * Perform a login of the user as callback on a submitted form.
@@ -107,10 +107,12 @@ class CCUser extends CObject implements IController {
    */
   public function Create() {
     $form = new CFormUserCreate($this);
-    if($this->session->GetAuthenticatedUser() != "1")
+    $user = $this->session->GetAuthenticatedUser();
+    if($user['isAuthenticated'] != 1)
     {
     	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
-    	  $this->RedirectToController('login');
+    	   $this->RedirectToController('login');
+
     	     	    
     }
     
@@ -153,7 +155,8 @@ class CCUser extends CObject implements IController {
    */
       public function Remove() {
     $form = new CFormUserRemove($this);
-    if($this->session->GetAuthenticatedUser() != "1")
+    $user = $this->session->GetAuthenticatedUser();
+    if($user['isAuthenticated'] != 1)
     {
     	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
     	  $this->RedirectToController('login');
@@ -190,7 +193,8 @@ class CCUser extends CObject implements IController {
    * get users.
    */
       public function getUsers() {
-      	      if($this->session->GetAuthenticatedUser() != "1")
+      $user = $this->session->GetAuthenticatedUser();
+    if($user['isAuthenticated'] != 1)
     {
     	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
     	  $this->RedirectToController('login');

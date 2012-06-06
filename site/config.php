@@ -35,8 +35,8 @@ $ly->config['installed'] = array('check' => 'false');
  * which is called in the frontcontroller phase from index.php.
  */
 $ly->config['controllers'] = array(
-  //'index'     => array('enabled' => true,'class' => 'CCIndex'),
-  'index'     => array('enabled' => true,'class' => 'CCMycontroller'),
+  'index'     => array('enabled' => true,'class' => 'CCIndex'),
+  //'index'     => array('enabled' => true,'class' => 'CCMycontroller'),
   'developer' => array('enabled' => false,'class' => 'CCDeveloper'),
   'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
   'user'      => array('enabled' => true,'class' => 'CCUser'),

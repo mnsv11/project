@@ -22,7 +22,7 @@ class CCForum extends CObject implements IController {
    */
   public function index($id=null) {
   	  $this->session->storePage('../forum');
-  	
+  	  
     $forum = new CMForum($id);
     $form = new CFormForumCat($forum);
     $status = $form->Check();
@@ -84,10 +84,9 @@ class CCForum extends CObject implements IController {
 	    }
     }
         
+   
     
-
-    
-    if($this->session->GetAuthenticatedUser() == "")
+    if($this->session->GetAuthenticatedUser() == "" && $forum['category'] == "medlem")
     {
     	   $this->session->AddMessage('notice', 'Du måste vara medlem för denna sidan!');
     	  $this->RedirectToController('../user/login');
@@ -185,6 +184,26 @@ class CCForum extends CObject implements IController {
                   'entries'=>$forum->ListAll(array('type'=>'tråd', 'order-by'=>'type', 'order-order'=>'DESC')),'form'=>$form,
                 ),'leftbar');
  }
-
+ 
+ 
+ 
+      /**
+   * Perform a remove of a thread
+   *
+   * 
+   */
+  public function Remove($id = null) {
+  	
+  	  $check = false;
+  	  $forum = new CMForum($id);
+  	  
+  	  if($check = $forum->Remove())
+    	    {
+	      $this->RedirectToController('ViewThread/'. $forum['key']);
+	    } else {
+	      $this->session->AddMessage('notice', "Failed to remove an account.");
+	      $this->RedirectToController('ViewThread/'. $forum['key']);
+	    }
+  }
 } 
 

@@ -3,29 +3,29 @@
    <thead>
    	<th>Användare</th>
       <tr>
-         <th id=userg>Acronym</th>
-         <th id=userg>Namn</th>
-         <th id=userg>Email</th>
-         <th id=userg>Användar grupp</th>
+      <th style="width:15%">Acronym</th>
+         <th style="width:40%">Namn</th>
+         <th style="width:30%">Email</th>
+         <th style="width:15%">Grupp</th>
       </tr>
    </thead>
 
 <?php foreach($users as $val):?>
 
       <tr>
- <td id=userg><?=$val['acronym'];?></td>
- <td id=userg><?=$val['name'];?></td>
- <td id=userg><?=$val['email'];?></td>
+ <td><?=$val['acronym'];?></td>
+ <td><?=$val['name'];?></td>
+ <td ><?=$val['email'];?></td>
  
  <?php foreach($userGroup as $val2):?>
 
  	<?php if($val['id'] == $val2['idUser']):?>
 	 
 		<?php if($val2['idGroups'] == 1):?>
-			<td id=userg>Admin</td>
+			<td>Admin</td>
 		 <?php endif;?>
 		 <?php if($val2['idGroups'] == 2):?>
-		 	<td id=userg>User</td>
+		 	<td>User</td>
 		 <?php endif;?>
 	 <?php endif;?>
 	 

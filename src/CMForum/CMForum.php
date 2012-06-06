@@ -54,6 +54,7 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
       'select * by type'        => "SELECT c.*, u.acronym as owner FROM Forum AS c INNER JOIN User as u ON c.idUser=u.id WHERE type=? ORDER BY {$order_by} {$order_order};",
       'select *'                => 'SELECT c.*, u.acronym as owner FROM Forum AS c INNER JOIN User as u ON c.idUser=u.id;',
       'update forum'            => "UPDATE Forum SET key=?, type=?, title=?, data=?, filter=?, updated=datetime('now') WHERE id=?;",
+      'remove'			=> "UPDATE Forum SET deleted=datetime('now') WHERE id=?;",
      );
     if(!isset($queries[$key])) {
       throw new Exception("No such SQL query, key '$key' was not found.");
@@ -105,16 +106,23 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
     
     $check = $this->check($this['type'] , $this['title']);
     
+    $checkUser = $this->user['id'];
+    if($checkUser == "")
+    {
+     $checkUser = "1";	    
+    }
+
     if($check)
     {
     	$this->AddMessage('error', "Kategori finns redan"); 
     	return "";
     }
+    
     else if($this['id']) {
       $this->db->ExecuteQuery(self::SQL('update forum'), array($this['key'], $this['type'], $this['title'], $this['data'],$this['category'], $this['filter'], $this['id']));
       $msg = 'uppdaterat';
     } else {
-      $this->db->ExecuteQuery(self::SQL('insert forum'), array($this['key'], $this['type'], $this['title'], $this['data'],$this['category'], $this['filter'], $this->user['id']));
+      $this->db->ExecuteQuery(self::SQL('insert forum'), array($this['key'], $this['type'], $this['title'], $this['data'],$this['category'], $this['filter'], $checkUser));
       $this['id'] = $this->db->LastInsertId();
       $msg = 'skapat';
     }
@@ -176,33 +184,18 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
   }
   
   
-   /**
-   * Filter content according to a filter.
-   *
-   * @param $data string of text to filter and format according its filter settings.
-   * @returns string with the filtered data.
-   */
-  public static function Filter($data, $filter) {
-    switch($filter) {
-      case 'php': $data = nl2br(makeClickable(eval('?>'.$data))); break;
-      case 'html': $data = nl2br(makeClickable($data)); break;
-      case 'htmlpurify': $data = nl2br(CHTMLPurifier::Purify($data)); break;
-      case 'bbcode': $data = nl2br(bbcode2html(htmlEnt($data))); break;
-      case 'plain': 
-      default: $data = nl2br(makeClickable(htmlEnt($data))); break;
+  public function Remove()
+  {
+     $msg = null;
+      $this->db->ExecuteQuery(self::SQL('remove'), array($this['id']));
+      $msg = 'removed';
+    $rowcount = $this->db->RowCount();
+    if($rowcount) {
+      $this->AddMessage('success', "Successfully {$msg} pictures");
+    } else {
+      $this->AddMessage('error', "Failed to {$msg} pictures");
     }
-    
-    return $data;
-  }
-  
-  
-    /**
-   * Get the filtered content.
-   *
-   * @returns string with the filtered data.
-   */
-  public function GetFilteredData() {
-    return $this->Filter($this['data'], $this['filter']);
+    return $rowcount === 1;
   }
   
   

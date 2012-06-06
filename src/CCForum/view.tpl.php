@@ -2,10 +2,10 @@
 <?php if($forum['id']):?>
 <h2>Trådar</h2>
 
-<div style='background-color:#C7C7C7;border:1px solid #ccc;'>
+<div style='background-color:#c7c7c7;border:1px solid #ccc;padding:10px;width:94%;'>
 <h4 style='text-align:center; margin-top:10px;'><?php echo $forum['title'];?></h4>   
 </div>
-<div style='background-color:#f6f6f6;border:1px solid #ccc;padding:1em;padding-left:50px;'>
+<div style='background-color:#f6f6f6;border:1px solid #ccc;padding:10px;width:94%;'>
 <p><?=filter_data($forum['data'], $forum['filter'])?></p>
 <p class='smaller-text'><em>Skapat: <?=$forum['created']?> by <?=$forum['owner']?></em></p>
 </div>
@@ -14,18 +14,20 @@
 
 
 <?php foreach($entries as $val):?>
-<?php if($forum['id']==$val['key']):?>
-	<div style='background-color:#f6f6f6;border:1px solid #ccc;padding:1em;padding-left:50px;'>
+<?php if($forum['id']==$val['key'] && $val['deleted'] == ""):?>
+	<div style='background-color:#f6f6f6;border:1px solid #ccc;padding:10px;width:94%;'>
 	
 	  <p><?=filter_data($val['data'], $val['filter'])?></p></p>
-	  <p class='smaller-text'><em>Skapat: <?=$val['created']?> by <?=$val['owner']?></em></p>
+	  <p class='smaller-text'><em>Skapat: <?=$val['created']?> by <?=$val['owner']?></em>
+	  <a style="float:right;" href='<?=create_url("forum/remove/{$val['id']}")?>'>Ta bort</a></p>
+	  
 	  
 	</div>
 <?php endif;?>
 <?php endforeach;?>
   
     
-    <h1> </h1>
+<h1 style="width:95%;margin-top:15px;"> </h1>
 
   
 <?php else:?>

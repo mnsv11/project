@@ -6,7 +6,7 @@
 <h2>Latest messages</h2>
 
 <?php foreach($entries as $val):?>
-<div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;'>
+<div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;width:77%;'>
   <p>At: <?=$val['created']?></p>
   <p><?=htmlent($val['entry'])?></p>
 </div>

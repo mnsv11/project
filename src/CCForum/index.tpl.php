@@ -1,6 +1,6 @@
 <div id=insidePrime>
 <h2>Forum</h2>
-<div style='background-color:#C7C7C7;border:1px solid #ccc;'>
+<div style='background-color:#C7C7C7;border:1px solid #ccc;width:95%'>
 <h4 style='text-align:center; margin-top:10px;'>Gäster</h4>
 </div>
 
@@ -10,10 +10,10 @@
 <?php $check = false;?>
   <?php foreach($forum as $val):?>
   <?php if($val['key'] == "gäster"):?>
-  <div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding-top:10px;'>
+  <div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding-top:10px;width:95%'>
   <table id=forum>
   <tr>
-  <th id=forumTh><img  style="height:50px; width: 67px;margin-left:15px;" src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/wheel.png" alt=""></th>
+  <th id=forumThIm><img  style="height:50px; width: 67px;" src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/wheel.png" alt=""></th>
     <th id=forum><h4><a href='<?=create_url("forum/view/{$val['id']}")?>'><?=esc($val['title'])?></a></h4></th>
     <th id=forum><p class='smaller-text'><em>Skapat: <?=$val['created']?> by <?=$val['owner']?></em></p></th>
     <?php $count= 0;
@@ -36,7 +36,7 @@
   if($usercheck['acronym']):
   	 if($check == true):?>
   	
-  	 <div style='background-color:#C7C7C7;border:1px solid #ccc;'>
+  	 <div style='background-color:#C7C7C7;border:1px solid #ccc;width:95%'>
 	<h4 style='text-align:center; margin-top:10px;'>Medlemmar</h4>
 	</div>
   	
@@ -45,10 +45,10 @@
   <?php foreach($forum as $val):?>
   
 	  <?php if($val['key'] == "medlem"):?>
-	  <div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding-top:10px;'>
+	  <div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding-top:10px;width:95%'>
 	    <table id=forum>
 	    <tr>
-	    <th id=forumTh><img  style="height:50px; width: 67px;margin-left:15px;" src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/wheel.png" alt=""></th>
+	    <th id=forumThIm><img  style="height:50px; width: 67px;" src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/wheel.png" alt=""></th>
 	    <th id=forum><p><h4><a href='<?=create_url("forum/view/{$val['id']}")?>'><?=esc($val['title'])?></a></h4></p></th>
 	    <th id=forum><p class='smaller-text'><em>Skapat: <?=$val['created']?> by <?=$val['owner']?></em></p></th>
 	        <?php $count= 0;
@@ -70,7 +70,7 @@
   
    <?php endif;?>
   <?php if($usercheck['groups'][0]['idGroups'] == "1"):?>
-	  <hr>
+	  <h1 style="width:95%"> </h1>
 	  <p>Skapa ny kategori, klicka i "rutan" om gäster skall ha till gång.</p>
 
 	  <?=$form->GetHTML()?>

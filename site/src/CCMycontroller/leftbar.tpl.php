@@ -1,5 +1,5 @@
-<br>
-<h3>Nyheter från </h3>
+
+<h2>Nyheter från </h2>
 <p>
 <img src=<?=$img?> width="200" height="40" alt="Huset" border="0">
 </p>

@@ -19,14 +19,15 @@
 	
 	  <p><?=filter_data($val['data'], $val['filter'])?></p></p>
 	  <p class='smaller-text'><em>Skapat: <?=$val['created']?> by <?=$val['owner']?></em>
-	  <a style="float:right;" href='<?=create_url("forum/remove/{$val['id']}")?>'>Ta bort</a></p>
 	  
+	  <?php if($val['idUser'] != 1 && $usercheck['acronym'] == $val['owner'] || $usercheck['groups'][0]['idGroups'] == 1):?>
+	  <a style="float:right;" href='<?=create_url("forum/remove/{$val['id']}")?>'>Ta bort</a></p>
+	  <?php endif;?>
 	  
 	</div>
 <?php endif;?>
 <?php endforeach;?>
-  
-    
+
 <h1 style="width:95%;margin-top:15px;"> </h1>
 
   

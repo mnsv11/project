@@ -105,7 +105,7 @@ class CSession {
   
   public function getPage()
   {
-  	
+  	  	
   	return $_SESSION[$this->lastPage];
   	
   }

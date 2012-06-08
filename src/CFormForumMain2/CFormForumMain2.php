@@ -19,6 +19,13 @@ class CFormForumMain2 extends CForm {
     $this->object = $object;
 
     $this->AddElement(new CFormElementText('title', array('value'=>"",'required'=>true)))
+    	 ->AddElement(new CFormElementButton('B', array('value'=>'[b][/b]')))
+   	 ->AddElement(new CFormElementButton('I', array('value'=>'[i][/i]')))
+   	 ->AddElement(new CFormElementButton('U', array('value'=>'[u][/u]')))
+   	 ->AddElement(new CFormElementButton('URL', array('value'=>'[url][/url]')))
+   	 ->AddElement(new CFormElementButton('IMG', array('value'=>'[img][/img]')))
+   	 ->AddElement(new CFormElementButton('Red text', array('value'=>'[color][/color]')))
+   	 ->AddElement(new CFormElementButton('YouTube', array('value'=>'[youtube][/youtube]')))
     	 ->AddElement(new CFormElementTextarea('data', array('label'=>'Add entry:')))
     	 ->AddElement(new CFormElementHidden('type', array('value'=>"tråd")))
     	 ->AddElement(new CFormElementHidden('key', array('value'=>$object['id'])))

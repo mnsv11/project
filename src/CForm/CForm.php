@@ -69,6 +69,10 @@ class CFormElement implements ArrayAccess{
     
    if($type && $this['type'] == 'submit') {
         return "<p><input id='$id'{$type}{$class}{$name}{$value}{$autofocus}{$readonly} /></p>\n";
+    
+   }else if($type && $this['type'] == 'button') {
+   	
+   	   return "<INPUT TYPE='button' NAME='insert' VALUE='{$this['name']}' onClick=this.form.data.value+='{$this->attributes['value']}';> ";    
    
    } else if($type && $this['type'] == 'textarea') {
         return "<p><label for='$id'>$label</label><br><textarea id='$id'{$type}{$class}{$name}{$autofocus}{$readonly}>{$onlyValue}</textarea></p>\n"; 
@@ -240,6 +244,21 @@ class CFormElementSubmit extends CFormElement {
     $this->UseNameAsDefaultValue();
   }
 }
+class CFormElementButton extends CFormElement {
+  /**
+   * Constructor
+   *
+   * @param string name of the element.
+   * @param array attributes to set to the element. Default is an empty array.
+   */
+  public function __construct($name, $attributes=array()) {
+  
+    parent::__construct($name, $attributes);
+    $this['type'] = 'button';
+    $this->UseNameAsDefaultValue();
+  }
+}
+
 
 
 class CForm implements ArrayAccess {

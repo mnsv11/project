@@ -39,7 +39,10 @@
 <?php else:?>
   <p>No pages exists.</p>
 <?php endif;?>
-<p><a href='<?=create_url("forum/CreateThread/{$forum['id']}")?>'>Lägg till ny tråd</a>.</p>
+
+<input style="border-radius: 10px" type="button" value="Lägg till ny tråd" onClick="top.location='<?=create_url("forum/CreateThread/{$forum["id"]}")?>'">
+
+
 </div>
 
 

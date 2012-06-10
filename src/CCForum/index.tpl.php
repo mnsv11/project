@@ -71,7 +71,7 @@
    <?php endif;?>
   <?php if($usercheck['groups'][0]['idGroups'] == "1"):?>
 	  <h1 style="width:95%"> </h1>
-	  <p>Skapa ny kategori, klicka i "rutan" om gäster skall ha till gång.</p>
+	  <p>Skapa ny kategori, klicka i "rutan" om gäster skall ha tillgång.</p>
 
 	  <?=$form->GetHTML()?>
   <?php endif;?>

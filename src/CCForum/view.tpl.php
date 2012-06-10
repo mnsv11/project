@@ -35,7 +35,8 @@
   <p>No pages exists.</p>
 <?php endif;?>
 
-<p><a href='<?=create_url("forum/create/{$forum['id']}")?>'>Gör ett inlägg</a>
-<a href='<?=create_url("forum/view/{$forum['key']}")?>'>Tillbaka</a></p></p>
+<input style="border-radius: 10px" type="button" value="Gör ett inlägg" onClick="top.location='<?=create_url("forum/create/{$forum["id"]}")?>'">
+<input style="border-radius: 10px" type="button" value="Tillbaka" onClick="top.location='<?=create_url("forum/view/{$forum["key"]}")?>'">
+
 <?php endif;?>
 </div>

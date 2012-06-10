@@ -71,9 +71,13 @@ class CFormElement implements ArrayAccess{
         return "<p><input id='$id'{$type}{$class}{$name}{$value}{$autofocus}{$readonly} /></p>\n";
     
    }else if($type && $this['type'] == 'button') {
-   	
-   	   return "<INPUT TYPE='button' NAME='insert' VALUE='{$this['name']}' onClick=this.form.data.value+='{$this->attributes['value']}';> ";    
+   	return "<INPUT TYPE='button' NAME='insert' VALUE='{$this['name']}' onClick=this.form.data.value+='{$this->attributes['value']}';> ";    
    
+   }else if($type && $this['type'] == 'img') {
+   	  // return "<img src='{$this->attributes['value']}' alt='{$this['name']}' width='18' height='18' onClick=this.form.data.value+='{$this->attributes['code']}'; />";
+   	    
+   
+   	   
    } else if($type && $this['type'] == 'textarea') {
         return "<p><label for='$id'>$label</label><br><textarea id='$id'{$type}{$class}{$name}{$autofocus}{$readonly}>{$onlyValue}</textarea></p>\n"; 
       
@@ -258,7 +262,20 @@ class CFormElementButton extends CFormElement {
     $this->UseNameAsDefaultValue();
   }
 }
-
+class CFormElementImg extends CFormElement {
+  /**
+   * Constructor
+   *
+   * @param string name of the element.
+   * @param array attributes to set to the element. Default is an empty array.
+   */
+  public function __construct($name, $attributes=array()) {
+  
+    parent::__construct($name, $attributes);
+    $this['type'] = 'img';
+    $this->UseNameAsDefaultValue();
+  }
+}
 
 
 class CForm implements ArrayAccess {

@@ -18,7 +18,8 @@ class CFormForumMain extends CForm {
     parent::__construct();
     $this->object = $object;
 
-    $this->AddElement(new CFormElementButton('B', array('value'=>'[b][/b]')))
+    $this->AddElement(new CFormElementImg('smile', array('value'=>'../../site/themes/mytheme/icon_smile.gif', 'code'=>'xxx')))
+    	 ->AddElement(new CFormElementButton('B', array('value'=>'[b][/b]')))
    	 ->AddElement(new CFormElementButton('I', array('value'=>'[i][/i]')))
    	 ->AddElement(new CFormElementButton('U', array('value'=>'[u][/u]')))
    	 ->AddElement(new CFormElementButton('URL', array('value'=>'[url][/url]')))

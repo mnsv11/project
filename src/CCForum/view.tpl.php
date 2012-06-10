@@ -21,7 +21,7 @@
 	  <p class='smaller-text'><em>Skapat: <?=$val['created']?> by <?=$val['owner']?></em>
 	  
 	  <?php if($val['idUser'] != 1 && $usercheck['acronym'] == $val['owner'] || $usercheck['groups'][0]['idGroups'] == 1):?>
-	  <a style="float:right;" href='<?=create_url("forum/remove/{$val['id']}")?>'>Ta bort</a></p>
+	  <a style="float:right;"href='<?=create_url("forum/remove/{$val['id']}")?>'>Ta bort</a></p>
 	  <?php endif;?>
 	  
 	</div>
@@ -34,6 +34,7 @@
 <?php else:?>
   <p>No pages exists.</p>
 <?php endif;?>
+
 <p><a href='<?=create_url("forum/create/{$forum['id']}")?>'>Gör ett inlägg</a>
 <a href='<?=create_url("forum/view/{$forum['key']}")?>'>Tillbaka</a></p></p>
 <?php endif;?>

@@ -8,7 +8,6 @@
 
 
 
-
 <?=$form->GetHTML(array('class'=>'forum-edit',))?>
 
 

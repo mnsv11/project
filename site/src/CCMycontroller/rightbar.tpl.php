@@ -1,5 +1,5 @@
 <div id=insidePrime>
-<div style="float:left;margin-right:50px;margin-left:50px;width:220px;">
+<div style="float:left;margin-right:60px;margin-left:10px;width:220px;">
 <br>
 <br><p>
 <img style="padding-top:10px;" src=<?=$img?> width="190" height="50" alt="logo" border="0">

@@ -57,6 +57,7 @@ class CFormElement implements ArrayAccess{
     $type   = isset($this['type']) ? " type='{$this['type']}'" : null;
     $onlyValue   = isset($this['value']) ? htmlentities($this['value'], ENT_COMPAT, $this->characterEncoding) : null;
     $value   = isset($this['value']) ? " value='{$this['value']}'" : null;
+    
 
     $messages = null;
     if(isset($this['validation_messages'])) {
@@ -71,12 +72,14 @@ class CFormElement implements ArrayAccess{
         return "<p><input id='$id'{$type}{$class}{$name}{$value}{$autofocus}{$readonly} /></p>\n";
     
    }else if($type && $this['type'] == 'button') {
-   	return "<INPUT TYPE='button' NAME='insert' VALUE='{$this['name']}' onClick=this.form.data.value+='{$this->attributes['value']}';> ";    
+   	   
+   	return "<INPUT TYPE='button' NAME='insert' VALUE='{$this['name']}' TITLE='{$this->attributes['title']}' onClick=this.form.data.value+='{$this->attributes['value']}'+'#'+this.form.color.value+'{$this->attributes['value2']}';> ";    
+   
+   }else if($type && $this['type'] == 'color') {
+   	return "<INPUT id='$id' NAME='color' TYPE='text' class='color' />";    
    
    }else if($type && $this['type'] == 'img') {
-   	  // return "<img src='{$this->attributes['value']}' alt='{$this['name']}' width='18' height='18' onClick=this.form.data.value+='{$this->attributes['code']}'; />";
-   	    
-   
+   	return "";
    	   
    } else if($type && $this['type'] == 'textarea') {
         return "<p><label for='$id'>$label</label><br><textarea id='$id'{$type}{$class}{$name}{$autofocus}{$readonly}>{$onlyValue}</textarea></p>\n"; 
@@ -85,6 +88,7 @@ class CFormElement implements ArrayAccess{
     } else if($type && $this['type'] == 'hidden') {
         return "<input id='$id'{$type}{$class}{$name}{$value} />\n"; 
     } else {
+    	    echo $readonly;
       return "<p><label for='$id'>$label</label><br><input id='$id'{$type}{$class}{$name}{$value}{$autofocus}{$readonly} />{$messages}</p>\n";        
     }
 
@@ -153,6 +157,21 @@ class CFormElementText extends CFormElement {
   public function __construct($name, $attributes=array()) {
     parent::__construct($name, $attributes);
     $this['type'] = 'text';
+    $this->UseNameAsDefaultLabel();
+  }
+}
+
+
+class CFormElementColor extends CFormElement {
+  /**
+   * Constructor
+   *
+   * @param string name of the element.
+   * @param array attributes to set to the element. Default is an empty array.
+   */
+  public function __construct($name, $attributes=array()) {
+    parent::__construct($name, $attributes);
+    $this['type'] = 'color';
     $this->UseNameAsDefaultLabel();
   }
 }

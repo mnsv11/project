@@ -16,8 +16,8 @@ margin-bottom:0px;width:0px;
 
 iframe{width:95px;}
 
-#primary{text-align:left;}
-#insidePrime{width:850px;}
+#primary{text-align:left;margin:auto;}
+#insidePrime{width:830px;}
 h1#insidePrime{padding-left:100px;margin-left:0px; width:750px;}
 a#insidePrime{padding-left:100px;margin-left:400px; width:800px;}
 em#insidePrime{padding-left:100px;margin-left:0px; width:800px;}
@@ -28,7 +28,7 @@ a{color:#808080}
 #rightbar{float:right;}
 #featured-middle{width:80%;}
 #featured-first{margin-top:-50px;}
-#inner-wrap-main{background-color:#E8E8E8;width:1250px;min-height:500px;margin-top:40px;}
+#inner-wrap-main{background-color:#E8E8E8;width:1250px;min-height:500px;margin-top:40px;padding-right:100px;}
 
 #middle-wrap-main{margin-bottom:@magic-number;
 		  width:1300px;
@@ -73,7 +73,7 @@ a{color:#808080}
 
 }
 
-
+#all-wrap{min-height:900px;}
 div.menu a:hover   {border-radius: 0px; }
 		    
 .menu{padding-top:30px;}
@@ -118,11 +118,10 @@ td{width:50px;}
 
 table#forum{width:800px;}
 th#forum{width:150px;}
-th#forumTh{width:100px;text-align:center;}
+th#forumTh{width:100px;padding-left:25px;}
 th#forumThIm{width:100px;padding-left:25px;}
-
+fieldset{width:600px;}
 table#userg{width:750px;}
-
 .youtube-player{width:430px;height:345px;}
 table{width:450px;}
 #date{font-size:12px;}
@@ -130,4 +129,4 @@ table{width:450px;}
 #boooba{width:250px;height:80px;}
 #tdmain{width:140px;}
 
-
+#form-element-color{width:70px;}

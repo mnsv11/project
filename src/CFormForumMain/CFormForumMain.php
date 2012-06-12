@@ -18,14 +18,15 @@ class CFormForumMain extends CForm {
     parent::__construct();
     $this->object = $object;
 
-    $this->AddElement(new CFormElementImg('smile', array('value'=>'../../site/themes/mytheme/icon_smile.gif', 'code'=>'xxx')))
-    	 ->AddElement(new CFormElementButton('B', array('value'=>'[b][/b]')))
-   	 ->AddElement(new CFormElementButton('I', array('value'=>'[i][/i]')))
-   	 ->AddElement(new CFormElementButton('U', array('value'=>'[u][/u]')))
-   	 ->AddElement(new CFormElementButton('URL', array('value'=>'[url][/url]')))
-   	 ->AddElement(new CFormElementButton('IMG', array('value'=>'[img][/img]')))
-   	 ->AddElement(new CFormElementButton('Red text', array('value'=>'[color][/color]')))
-   	 ->AddElement(new CFormElementButton('YouTube', array('value'=>'[youtube][/youtube]')))
+    $this->AddElement(new CFormElementImg('smile', array('value'=>'../../site/themes/mytheme/icon_smile.gif', 'code'=>'xxx', 'title' =>'')))
+    	 ->AddElement(new CFormElementButton('B', array('value'=>'[b][/b]','value2'=>'', 'title' =>'')))
+   	 ->AddElement(new CFormElementButton('I', array('value'=>'[i][/i]','value2'=>'', 'title' =>'')))
+   	 ->AddElement(new CFormElementButton('U', array('value'=>'[u][/u]','value2'=>'', 'title' =>'')))
+   	 ->AddElement(new CFormElementButton('URL', array('value'=>'[url][/url]','value2'=>'', 'title' =>'')))
+   	 ->AddElement(new CFormElementButton('IMG', array('value'=>'[img][/img]','value2'=>'', 'title' =>'')))
+   	 ->AddElement(new CFormElementColor('color', array('value'=>'', 'class'=>'color')))
+   	 ->AddElement(new CFormElementButton('Lägg till färg', array('value'=>'[color=','value2'=>'][/color]', 'title' =>'')))
+   	 ->AddElement(new CFormElementButton('YouTube', array('value'=>'[youtube][/youtube]','value2'=>'','title' =>'kopiera adressen ex. www.youtube.com/embed/W-Q7RMpINVo')))
     	 ->AddElement(new CFormElementTextarea('data', array('label'=>'Add entry:')))
     	 ->AddElement(new CFormElementHidden('type', array('value'=>"tråd")))
     	 ->AddElement(new CFormElementHidden('key', array('value'=>$object['id'])))

@@ -156,6 +156,9 @@ body{margin:0;padding:0;color:@color;background-color:@bgcolor2;
 }  
 
 
+
+
+
 /** --------------------------------------------------------------
  * The header area.
  *
@@ -424,6 +427,7 @@ padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; border-radius: 30px;
 /** --------------------------------------------------------------
  * Misc
  */
-.smaller-text{font-size:smaller;}
+.smaller-text{font-size:10px;}
 .silent{color:#999;}
+
 

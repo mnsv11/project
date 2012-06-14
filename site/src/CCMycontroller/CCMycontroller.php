@@ -12,7 +12,7 @@ class CCMycontroller extends CObject implements IController {
   public function __construct() { 
   	  parent::__construct();
   	  $this->picParth = 'http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/';
-  
+  	  
   }
   
   

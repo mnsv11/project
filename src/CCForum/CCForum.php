@@ -12,6 +12,9 @@ class CCForum extends CObject implements IController {
    */
   public function __construct() {
     parent::__construct();
+    
+    
+    
   }
 
 
@@ -24,6 +27,7 @@ class CCForum extends CObject implements IController {
   	  $this->session->storePage('../forum');
   	  
     $forum = new CMForum($id);
+
     $form = new CFormForumCat($forum);
     $status = $form->Check();
     if($status === false) {
@@ -44,10 +48,22 @@ class CCForum extends CObject implements IController {
    
    
 
+
    public function init(){
+   	     $userCheck = $this->session->GetAuthenticatedUser();
+   	 if($userCheck['groups'][0]['idGroups'] == 1)
+   	 {
    	   $this->views->SetTitle('init');
    	   $forum = new CMForum();
-	 $forum->Manage('install');	   
+	 $forum->Manage('install');
+	 $this->AddMessage('notice', 'Ny databas för forumet är skapat');
+	 $this->RedirectToController();
+	 }
+	 else
+	 {
+	 	 $this->AddMessage('notice', 'Du har inte behörighet för denna funktion');
+	 	$this->RedirectToController();	 
+	 }
    }
    
    
@@ -60,6 +76,7 @@ class CCForum extends CObject implements IController {
    * @param id integer the id of the content.
    */
   public function Edit($id=null, $postId=null) {
+  	  $check = false;
   	  
     if($postId)
     {
@@ -74,17 +91,39 @@ class CCForum extends CObject implements IController {
     }
     else
     {
+    	    
     	    $forum = new CMForum($id);
-    	    $form = new CFormForumMain2($forum);
+    	    if($forum['type'] == "tråd"){
+    	    	    $form = new CFormForumMain2A($forum);
+    	    	    if($forum['title'] == ""){
+    	    	    	    $redirect ='viewThread/' . $forum['key'];
+    	    	    }else{
+    	    	    	  $redirect = 'viewThread/' . $forum['id'];  
+    	    	    }
+    	    }
+    	    else
+    	    {
+    	    	   $form = new CFormForumMain2($forum); 
+    	    	  $check = true;
+    	    	   
+    	    }	    
+    	    
     	        $status = $form->Check();
 	    if($status === false) {
 	      $this->session->AddMessage('notice', 'The form could not be processed.');
 	    } else if($status === true) {
-	      $this->RedirectToController('viewThread/'. $this->db->LastInsertId());
+	    	    
+	    	    if($check == true)
+	    	    {
+	    	 	$redirect ='viewThread/'.$forum['id'];
+	    	    }
+	    	 
+	      $this->RedirectToController($redirect);
 	    }
+	    	    
+	    
     }
         
-   
     
     if($this->session->GetAuthenticatedUser() == "" && $forum['category'] == "medlem")
     {
@@ -99,7 +138,9 @@ class CCForum extends CObject implements IController {
                   'user'=>$this->user, 
                   'forum'=>$forum, 
                   'form'=>$form,
+                  'title'=>$title,
                 ),'leftbar');
+    
   }
   
 
@@ -193,13 +234,20 @@ class CCForum extends CObject implements IController {
    * 
    */
   public function Remove($id = null) {
+  	 
   	
-  	  $check = false;
+  	 $check = false;
   	  $forum = new CMForum($id);
-  	  
-  	  if($check = $forum->Remove())
+  	
+  	 if($check = $forum->Remove())
     	    {
-	      $this->RedirectToController('ViewThread/'. $forum['key']);
+    	    	    if($forum['title'] == ""){
+    	    	    	    $this->RedirectToController('ViewThread/'. $forum['key']);
+    	    	    }
+    	    	    else{
+    	    	    	    $this->RedirectToController('view/' . $forum['key']);
+    	    	    }
+    	    	    	    
 	    } else {
 	      $this->session->AddMessage('notice', "Failed to remove an account.");
 	      $this->RedirectToController('ViewThread/'. $forum['key']);

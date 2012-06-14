@@ -25,7 +25,7 @@ class CFormForumMain2 extends CForm {
    	 ->AddElement(new CFormElementButton('URL', array('value'=>'[url][/url]','value2'=>'', 'title' =>'')))
    	 ->AddElement(new CFormElementButton('IMG', array('value'=>'[img][/img]','value2'=>'', 'title' =>'')))
    	 ->AddElement(new CFormElementColor('color', array('value'=>'', 'class'=>'color')))
-   	 ->AddElement(new CFormElementButton('Lägg till färg', array('value'=>'[color]','value2'=>'[/color]', 'title' =>'')))
+   	 ->AddElement(new CFormElementButton('Lägg till färg', array('value'=>'[color=','value2'=>'][/color]', 'title' =>'')))
    	 ->AddElement(new CFormElementButton('YouTube', array('value'=>'[youtube][/youtube]','value2'=>'','title' =>'kopiera adressen ex. www.youtube.com/embed/W-Q7RMpINVo')))
     	 ->AddElement(new CFormElementTextarea('data', array('label'=>'Add entry:')))
     	 ->AddElement(new CFormElementHidden('type', array('value'=>"tråd")))
@@ -40,18 +40,19 @@ class CFormForumMain2 extends CForm {
   
   
   /**
-   * Callback to save the form content to database.
+   * Callback to save the form forum to database.
    */
-  public function DoSave($form, $content) {
+  public function DoSave($form, $forum) {
 
-    $content['id']        = $form['id']['value'];
-    $content['title']     = $form['title']['value'];
-    $content['key']       = $form['key']['value'];
-    $content['data']      = $form['data']['value'];
-    $content['type']      = $form['type']['value'];
-    $content['filter']    = $form['filter']['value'];
+    $forum['id']        = $form['id']['value'];
+    $forum['title']     = $form['title']['value'];
+    $forum['key']       = $form['key']['value'];
+    $forum['data']      = $form['data']['value'];
+    $forum['type']      = $form['type']['value'];
+    $forum['filter']    = $form['filter']['value'];
 
-    return $content->Save();
+    
+    return $forum->Save();
   }
   
   

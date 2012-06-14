@@ -53,8 +53,9 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
       'select * by key'         => 'SELECT c.*, u.acronym as owner FROM Forum AS c INNER JOIN User as u ON c.idUser=u.id WHERE c.key=?;',
       'select * by type'        => "SELECT c.*, u.acronym as owner FROM Forum AS c INNER JOIN User as u ON c.idUser=u.id WHERE type=? ORDER BY {$order_by} {$order_order};",
       'select *'                => 'SELECT c.*, u.acronym as owner FROM Forum AS c INNER JOIN User as u ON c.idUser=u.id;',
-      'update forum'            => "UPDATE Forum SET key=?, type=?, title=?, data=?, filter=?, updated=datetime('now') WHERE id=?;",
+      'update forum'            => "UPDATE Forum SET key=?, type=?, title=?, data=?,category=?, filter=?, updated=datetime('now') WHERE id=?;",
       'remove'			=> "UPDATE Forum SET deleted=datetime('now') WHERE id=?;",
+      'lastid'			=> 'SELECT MAX(id) as id FROM Forum;',
      );
     if(!isset($queries[$key])) {
       throw new Exception("No such SQL query, key '$key' was not found.");
@@ -62,7 +63,7 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
     return $queries[$key];
   }
 
-
+ 
 
   /**
    * Implementing interface IModule. Manage install/update/deinstall and equal actions.
@@ -73,7 +74,7 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
         try {
           $this->db->ExecuteQuery(self::SQL('drop table forum'));
           $this->db->ExecuteQuery(self::SQL('create table forum'));
-          $this->db->ExecuteQuery(self::SQL('insert forum'), array('gäster', 'kategori', 'Gäster', "",'gäst', 'plain', $this->user['id']));
+          $this->db->ExecuteQuery(self::SQL('insert forum'), array('gäster', 'kategori', 'Information', "",'gäst', 'plain', $this->user['id']));
           $this->db->ExecuteQuery(self::SQL('insert forum'), array('medlem', 'kategori', 'Suzuki', "",'medlem', 'plain', $this->user['id']));
           $this->db->ExecuteQuery(self::SQL('insert forum'), array('medlem', 'kategori', 'Mek', "",'medlem', 'plain', $this->user['id']));
           $this->db->ExecuteQuery(self::SQL('insert forum'), array('medlem', 'kategori', 'Sporthojar i övrigt', "",'medlem', 'plain', $this->user['id']));
@@ -103,7 +104,7 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
    */
   public function Save() {
     $msg = null;
-    
+  
     $check = $this->check($this['type'] , $this['title']);
     
     $checkUser = $this->user['id'];
@@ -120,17 +121,18 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
     
     else if($this['id']) {
       $this->db->ExecuteQuery(self::SQL('update forum'), array($this['key'], $this['type'], $this['title'], $this['data'],$this['category'], $this['filter'], $this['id']));
-      $msg = 'uppdaterat';
+      $msg = 'uppdaterad';
     } else {
       $this->db->ExecuteQuery(self::SQL('insert forum'), array($this['key'], $this['type'], $this['title'], $this['data'],$this['category'], $this['filter'], $checkUser));
       $this['id'] = $this->db->LastInsertId();
-      $msg = 'skapat';
+    
+      $msg = 'skapad';
     }
     $rowcount = $this->db->RowCount();
     if($rowcount) {
-      $this->AddMessage('success', "Lyckades att {$msg} {$this['type']}");
-    } else {
-      $this->AddMessage('error', "Misslyckat att {$msg} {$this['type']}");
+      $this->AddMessage('success', "{$this['type']} blev {$msg} ");
+     } else {
+      $this->AddMessage('error', "{$this['type']} blev inte {$msg}");
     }
     return $rowcount === 1;
   }
@@ -143,6 +145,26 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
    	  }
   }
   
+  
+  /**
+  *edit forum
+  *
+  */
+  public function edit()
+  {
+  	  
+  	  $this->db->ExecuteQuery(self::SQL('update forum'), array($this['key'], $this['type'], $this['title'], $this['data'],$this['category'], $this['filter'], $this['id']));
+  	  $msg = 'uppdaterad';
+  	  $rowcount = $this->db->RowCount();
+  	  
+          if($rowcount) {
+          	  $this->AddMessage('success', "{$this['type']} {$msg}");
+          } else {
+          	  $this->AddMessage('error', "{$this['type']} ej {$msg} ");
+          }
+          return $rowcount === 1;
+  	  
+  }
   
     /**
    * Load content by id.
@@ -183,7 +205,11 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
     }
   }
   
+ 
   
+  /**remove a thread or post in forum
+  *
+  */
   public function Remove()
   {
      $msg = null;
@@ -191,9 +217,9 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
       $msg = 'removed';
     $rowcount = $this->db->RowCount();
     if($rowcount) {
-      $this->AddMessage('success', "Successfully {$msg} pictures");
+      $this->AddMessage('success', "Successfully {$msg}");
     } else {
-      $this->AddMessage('error', "Failed to {$msg} pictures");
+      $this->AddMessage('error', "Failed to {$msg}");
     }
     return $rowcount === 1;
   }

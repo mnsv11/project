@@ -38,9 +38,11 @@ class CCPics extends CObject implements IController {
    * Add pics.
    */
   public function addPics($id=null) {
-    if($this->session->GetAuthenticatedUser() != "1")
+  	  $user = $this->session->GetAuthenticatedUser();
+
+    if($user['groups'][0]['idGroups'] != 1)
     {
-    	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
+    	   $this->session->AddMessage('error', 'Du har inte behörighet för denna sidan');
     	  $this->RedirectToController('../user/login');
     	     	    
     }
@@ -58,7 +60,7 @@ class CCPics extends CObject implements IController {
     $this->views->AddInclude(__DIR__ . '/addPic.tpl.php', array(
                   'contents' => $pictures,'usercheck' => $this->session->GetAuthenticatedUser(),
                   'entries'=>$pictures->ListAll(array('type'=>'komment', 'order-by'=>'type', 'order-order'=>'DESC')),'form'=>$form,
-                ),'primary');
+                ),'leftbar');
    }
    
    
@@ -66,9 +68,11 @@ class CCPics extends CObject implements IController {
    * Remove pics.
    */
   public function removePics($id=null) {
-  	  if($this->session->GetAuthenticatedUser() != "1")
+  	  $user = $this->session->GetAuthenticatedUser();
+
+    if($user['groups'][0]['idGroups'] != 1)
     {
-    	   $this->session->AddMessage('notice', 'Du har inte behörighet för denna sidan');
+    	   $this->session->AddMessage('error', 'Du har inte behörighet för denna sidan');
     	  $this->RedirectToController('../user/login');
     	     	    
     }
@@ -86,7 +90,7 @@ class CCPics extends CObject implements IController {
     $this->views->AddInclude(__DIR__ . '/removePic.tpl.php', array(
                   'contents' => $pictures,'usercheck' => $this->session->GetAuthenticatedUser(),
                   'entries'=>$pictures->ListAll(array('type'=>'komment', 'order-by'=>'type', 'order-order'=>'DESC')),'form'=>$form,
-                ),'primary');
+                ),'leftbar');
    }
    
  

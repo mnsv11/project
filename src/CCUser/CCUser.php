@@ -95,8 +95,8 @@ class CCUser extends CObject implements IController {
     	    $this->session->AddMessage('success', "Welcome {$this->user['name']}.");
       
       $this->RedirectToController($this->session->getPage());
-    } else {
-      $this->session->AddMessage('notice', "Failed to login, user does not exist or password does not match.");
+    }else {
+      
       $this->RedirectToController('login');      
     }
     	 
@@ -221,8 +221,11 @@ class CCUser extends CObject implements IController {
    * Init the user database.
    */
   public function Init() {
-    $this->user->Init();
-    $this->RedirectToController();
+    $this->views->SetTitle('init');
+   	   $user = new CMUser;
+	 $user->Manage('install');
+	 $this->AddMessage('notice', 'Ny databas för forumet är skapat');
+	 $this->RedirectToController();
   }
   
 

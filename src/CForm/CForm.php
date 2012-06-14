@@ -73,9 +73,14 @@ class CFormElement implements ArrayAccess{
     
    }else if($type && $this['type'] == 'button') {
    	   
-   	return "<INPUT TYPE='button' NAME='insert' VALUE='{$this['name']}' TITLE='{$this->attributes['title']}' onClick=this.form.data.value+='{$this->attributes['value']}'+'#'+this.form.color.value+'{$this->attributes['value2']}';> ";    
-   
-   }else if($type && $this['type'] == 'color') {
+   	   if($this->attributes['value2'] ==  ""){
+   	   	return "<INPUT TYPE='button' NAME='insert' VALUE='{$this['name']}' TITLE='{$this->attributes['title']}' onClick=this.form.data.value+='{$this->attributes['value']}';> ";   
+   	   }
+   	   else{
+   	   	   return "<INPUT TYPE='button' NAME='insert' VALUE='{$this['name']}' TITLE='{$this->attributes['title']}' onClick=this.form.data.value+='{$this->attributes['value']}'+'#'+this.form.color.value+'{$this->attributes['value2']}';> ";    
+   	   }
+  
+   	   }else if($type && $this['type'] == 'color') {
    	return "<INPUT id='$id' NAME='color' TYPE='text' class='color' />";    
    
    }else if($type && $this['type'] == 'img') {

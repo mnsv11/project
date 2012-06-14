@@ -35,18 +35,18 @@ $ly->config['installed'] = array('check' => 'false');
  * which is called in the frontcontroller phase from index.php.
  */
 $ly->config['controllers'] = array(
-  'index'     => array('enabled' => true,'class' => 'CCIndex'),
-  //'index'     => array('enabled' => true,'class' => 'CCMycontroller'),
-  'developer' => array('enabled' => false,'class' => 'CCDeveloper'),
-  'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
+  //'index'     => array('enabled' => true,'class' => 'CCIndex'),
+  'index'     => array('enabled' => true,'class' => 'CCMycontroller'),
+  //'developer' => array('enabled' => false,'class' => 'CCDeveloper'),
+  //'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
   'user'      => array('enabled' => true,'class' => 'CCUser'),
   'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
-  'content'   => array('enabled' => true,'class' => 'CCContent'),
+  //'content'   => array('enabled' => true,'class' => 'CCContent'),
   'pics'      => array('enabled' => true,'class' => 'CCPics'),
-  'blog'      => array('enabled' => true,'class' => 'CCBlog'),
+  //'blog'      => array('enabled' => true,'class' => 'CCBlog'),
   'page'      => array('enabled' => true,'class' => 'CCPage'),
   'theme'     => array('enabled' => true,'class' => 'CCTheme'),
-  'modules'   => array('enabled' => true,'class' => 'CCModules'),
+  //'modules'   => array('enabled' => true,'class' => 'CCModules'),
   'my'        => array('enabled' => true,'class' => 'CCMycontroller'),
   'forum'     => array('enabled' => true,'class' => 'CCForum'),
 

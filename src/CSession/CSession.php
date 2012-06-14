@@ -13,6 +13,7 @@ class CSession {
   private $key;
   private $data = array();
   private $flash = null;
+
   
   
 
@@ -96,6 +97,10 @@ class CSession {
       }
     }
   }
+  
+  /**
+  *Store last visited page
+  */
       public function storePage($page=null)
   {
   	  $_SESSION[$this->lastPage] = $page;
@@ -103,13 +108,18 @@ class CSession {
   	  
   }
   
+  /**return last visited page
+  */
   public function getPage()
   {
   	  	
   	return $_SESSION[$this->lastPage];
+  
   	
   }
-
+ 
+  
+  
 
 
 } 

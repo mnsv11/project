@@ -11,7 +11,7 @@
 <body id=<?=$title?>>
 <div id='all-wrap'>
 <?php if($showMenu == "true"): ?>
-
+	
 	<fieldset class='menuField'>
 	<img id='logo_menu' src='<?=theme_url($logo)?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' /img>
 		<div class='menu'>
@@ -23,14 +23,16 @@
 			<?php if($check == "logged"):?>
 				<meta http-equiv="refresh" content="600; URL=<?=$url?>"/>
 			<?php endif; ?>
+			<div id='message'><?=get_messages_from_session()?></div>
 			<div id='login-menu'><?=login_menu()?></div>
-		   </div>
+		  </div>
 		   
 		</div>
+		
 	</fieldset>
 	<hr style="color:white;">
 	<?php endif; ?>
-	<div id='message'><?=get_messages_from_session()?></div>
+	
 <div id='outer-wrap-header'>
   <div id='inner-wrap-header'>
     <div id='header'>

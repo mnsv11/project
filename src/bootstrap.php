@@ -83,7 +83,7 @@ function bbcode2html($text) {
     '/(:)\)/is',
     '/(:D)/is',
     '/(:\()/is',
-    '/(:o )/is',
+    '/(:o)/is',
     '/(:\|)/is',
     '/(;)\)/is',
     '/(:evil:)/is',

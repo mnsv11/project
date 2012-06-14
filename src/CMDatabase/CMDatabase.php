@@ -67,9 +67,10 @@ class CMDatabase {
    * Return last insert id.
    */
   public function LastInsertId() {
-    return $this->db->lastInsertid();
+  	  
+    return $this->db->lastInsertId();
   }
-
+  
 
   /**
    * Return rows affected of last INSERT, UPDATE, DELETE

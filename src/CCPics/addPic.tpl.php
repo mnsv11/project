@@ -2,5 +2,4 @@
 <h2>Lägg till en bild</h2>
 <?=$form->GetHTML()?>
 
-<class='smaller-text silent'><a href='<?=create_url("pics")?>'>Tillbaka till bilder</a></p>
-
+<input  type="button" value="Tillbaka till bilder" onClick="top.location='<?=create_url("pics")?>'">

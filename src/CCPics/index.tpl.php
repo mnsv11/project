@@ -26,7 +26,7 @@
 
 
 <?php if($usercheck['groups'][0]['idGroups'] == "1"):?>
-<p style="margin-left:100px;padding-left:70px;"><a href='<?=create_url("pics/addPics")?>'>Lägg till bild</a>
-<a href='<?=create_url("pics/removePics")?>'>Tabort bild</a></p>
+<p style="margin-left:200px;"><input  type="button" value="Lägg till bild" onClick="top.location='<?=create_url("pics/addPics")?>'">
+<input  type="button" value="Tabort bild" onClick="top.location='<?=create_url("pics/removePics")?>'"></p>
 <?php endif;?>
 

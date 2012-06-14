@@ -18,17 +18,17 @@ iframe{width:95px;}
 
 #primary{text-align:left;margin:auto;}
 #insidePrime{width:830px;}
-h1#insidePrime{padding-left:100px;margin-left:0px; width:750px;}
-a#insidePrime{padding-left:100px;margin-left:400px; width:800px;}
-em#insidePrime{padding-left:100px;margin-left:0px; width:800px;}
-h2#insidePrime{padding-left:100px;margin-left:0px; width:800px;}
+h1#insidePrime{padding-left:20px;margin-left:0px; width:800px;}
+a#insidePrime{padding-left:20px;margin-left:400px; width:800px;}
+em#insidePrime{padding-left:20px;margin-left:0px; width:800px;}
+h2#insidePrime{padding-left:20px;margin-left:0px; width:800px;}
 #outer-wrap-footer{background-color:white;}
 a{color:#808080}
 
 #rightbar{float:right;}
 #featured-middle{width:80%;}
 #featured-first{margin-top:-50px;}
-#inner-wrap-main{background-color:#E8E8E8;width:1250px;min-height:500px;margin-top:40px;padding-right:100px;}
+#inner-wrap-main{background-color:#E8E8E8;width:1250px;min-height:500px;margin-top:0px;padding-right:100px;}
 
 #middle-wrap-main{margin-bottom:@magic-number;
 		  width:1300px;
@@ -48,6 +48,9 @@ a{color:#808080}
 	       border: 0px; 
 	       margin-bottom:20px;
 	       padding-top:20px;
+	       padding-left: 450px;
+	       padding-right: 400px;
+	       width:1200px;
 	       background:#E8E8E8;}
 	       
 
@@ -72,12 +75,12 @@ a{color:#808080}
 
 
 }
-
+#login-menu{float:right;padding-top:12px;margin-right:50px;}
 #all-wrap{min-height:900px;}
 div.menu a:hover   {border-radius: 0px; }
 		    
 .menu{padding-top:30px;}
-#message{float:right;margin-right:230px; width:auto}
+#message{float:left;margin-right:0px; width:auto}
 
 #flash{width:921px; margin-bottom:30px;}
 #about{float:left;padding-right:10px;padding-top:7px;}
@@ -86,7 +89,7 @@ h2#indexNews{text-align:left; width:800px;padding-bottom:15px;}
 img#indexNews{margin-top:60px;}
 
 div#indexNews{border: 1px solid black;
-	      margin-top:80px;
+	      margin-top:100px;
 	      padding:10px;
 	      
 	      float:left;
@@ -117,7 +120,7 @@ body#Page a#Nyheter- {background:white;border-radius: 5px;}
 td{width:50px;}
 
 table#forum{width:800px;}
-th#forum{width:150px;}
+th#forum{width:180px;}
 th#forumTh{width:100px;padding-left:25px;}
 th#forumThIm{width:100px;padding-left:25px;}
 fieldset{width:600px;}
@@ -128,5 +131,16 @@ table{width:450px;}
 #form-element-data{width:80%;height:200px;}
 #boooba{width:250px;height:80px;}
 #tdmain{width:140px;}
+.error, .alert, .warning, .notice, .success, .info { 
+padding-bottom:20px;
+padding-top:0px; 
+margin-left:20px; 
+margin-top:10px;
+border: 2px solid #ddd; 
+border-radius: 30px;
+text-align:center;
+font-size:10px;
+font-weight:900;
+height:10px;}
 
 #form-element-color{width:70px;}

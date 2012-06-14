@@ -412,7 +412,7 @@ div.menu a {padding: 0.3em 1em 0 1em;color: #000000;
  * User feedback message wrappers.
  */
 .error, .alert, .warning, .notice, .success, .info { 
-padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; border-radius: 30px;text-align:center;}
+padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; border-radius: 30px;text-align:center;font-size:6px}
 
 .error, .alert { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4;text-align:center;}
 .notice, .warning { background: #FA0008; color: #514721; border-color: #ffd324;text-align:center;}

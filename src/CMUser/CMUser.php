@@ -42,7 +42,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
       'drop table user'         => "DROP TABLE IF EXISTS User;",
       'drop table group'        => "DROP TABLE IF EXISTS Groups;",
       'drop table user2group'   => "DROP TABLE IF EXISTS User2Groups;",
-      'create table user'       => "CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, email TEXT, algorithm TEXT, salt TEXT, password TEXT, created DATETIME default (datetime('now')), updated DATETIME default NULL);",
+      'create table user'       => "CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, email TEXT, algorithm TEXT, salt TEXT, password TEXT,logged TEXT, created DATETIME default (datetime('now')), updated DATETIME default NULL);",
       'create table group'      => "CREATE TABLE IF NOT EXISTS Groups (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, created DATETIME default (datetime('now')), updated DATETIME default NULL);",
       'create table user2group' => "CREATE TABLE IF NOT EXISTS User2Groups (idUser INTEGER, idGroups INTEGER, created DATETIME default (datetime('now')), PRIMARY KEY(idUser, idGroups));",
       'remove user'		=> 'DELETE FROM User WHERE (name=? and email=?);',
@@ -50,6 +50,9 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
       'getUserId'		=> 'SELECT id FROM User WHERE (name=? and email=?);',
       'getUsers'		=> 'SELECT * FROM User;',
       'insert into group'       => 'INSERT INTO Groups (acronym,name) VALUES (?,?);',
+      'logIn'			=> "UPDATE User set logged= 1  WHERE id=?;",
+      'logOut'			=> "UPDATE User set logged= 0  WHERE id=?;",
+      'check'			=> 'SELECT logged FROM User WHERE (acronym=? OR email=?);',
       'insert into user2group'  => 'INSERT INTO User2Groups (idUser,idGroups) VALUES (?,?);',
       'delete user user2group'  => 'DELETE FROM User2Groups WHERE (idUser=?);',
       'get user user2group'     => 'SELECT * FROM User2Groups;',
@@ -92,7 +95,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
           $this->db->ExecuteQuery(self::SQL('insert into group'), array('user', 'The User Group'));
           $idUserGroup = $this->db->LastInsertId();
           $this->db->ExecuteQuery(self::SQL('insert into user2group'), array($idRootUser, $idAdminGroup));
-          $this->db->ExecuteQuery(self::SQL('insert into user2group'), array($idRootUser, $idUserGroup));
           $this->db->ExecuteQuery(self::SQL('insert into user2group'), array($idDoeUser, $idUserGroup));
           return array('success', 'Successfully created the database tables and created a default admin user as root:root and an ordinary user as doe:doe.');
         } catch(Exception$e) {
@@ -117,19 +119,28 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
    * @returns booelan true if match else false.
    */
   public function Login($akronymOrEmail, $password) {
+    $logged = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('check'), array($akronymOrEmail, $akronymOrEmail));
     $user = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('check user password'), array($akronymOrEmail, $akronymOrEmail));
     $user = (isset($user[0])) ? $user[0] : null;
     if(!$user) {
+      $this->session->AddMessage('notice', "Användarnamn eler password är fel!");
       return false;
     } else if(!$this->CheckPassword($password, $user['algorithm'], $user['salt'], $user['password'])) {
+    	    $this->session->AddMessage('notice', "Användarnamn eler password är fel!");
       return false;
     }
+     /**   if($logged[0]['logged'] == "1")
+    {
+    	$this->session->AddMessage('error', "Du är redan inloggad någon annanstans!");
+    	return false;
+    }*/
     unset($user['algorithm']);
     unset($user['salt']);
     unset($user['password']);
     if($user) {
       $user['isAuthenticated'] = true;
       $user['groups'] = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('get group memberships'), array($user['id']));
+      $this->db->ExecuteQuery(self::SQL('logIn'), array($user['id']));
       foreach($user['groups'] as $val) {
         if($val['id'] == 1) {
           $user['hasRoleAdmin'] = true;
@@ -151,6 +162,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
    * Logout. Clear both session and internal properties.
    */
   public function Logout() {
+    $this->db->ExecuteQuery(self::SQL('logOut'), array($this['id']));
     $this->session->UnsetAuthenticatedUser();
     $this->profile = array();
     $this->session->AddMessage('success', "You have logged out.");
@@ -253,7 +265,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
      $userInfo = $this->db->LastInsertId();
     $this->userGroup($userInfo,$group);
     if($this->db->RowCount() == 0) {
-      $this->session->AddMessage('error', "Failed to create user.");
+      $this->session->AddMessage('C', "Failed to create user.");
       return false;
     }
     return true;

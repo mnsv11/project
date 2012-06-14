@@ -1,11 +1,17 @@
 <div id=insidePrime>
 <script type="text/javascript" src="../../src/CCForum/jscolor/jscolor.js"></script>
 <?php if($forum['type'] == "tråd"): ?>
-  <h1>Nytt inlägg</h1>
+	<?php if($title== "Edit"):?>
+		<h1>Editera</h1>
+	<?php else:?>
+		<h1>Nytt inlägg</h1>
+	<?php endif; ?>	
   <?php $top=50;?>
-<?php else: ?>
+
+<?php elseif($forum['data'] == ""): ?>
   <h1>Ny tråd</h1>
   <?php $top=115;?>
+  
 <?php endif; ?>
 
 

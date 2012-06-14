@@ -1,6 +1,6 @@
 <div id=insidePrime>
 <h2>Forum</h2>
-<div style='background-color:#C7C7C7;border:1px solid #ccc;width:95%'>
+<div style='background-color:#C7C7C7;border:3px groove #ccc;width:95%'>
 <h4 style='text-align:center; margin-top:10px;'>Gäster</h4>
 </div>
 
@@ -10,7 +10,7 @@
 <?php $check = false;?>
   <?php foreach($forum as $val):?>
   <?php if($val['key'] == "gäster"):?>
-  <div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding-top:10px;width:95%'>
+  <div style='background-color:#f6f6f6;border:1px solid #ccc;padding-top:10px;width:95.2%;'>
   <table id=forum>
   <tr>
   <th id=forumThIm><img  style="height:50px; width: 67px;" src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/wheel.png" alt=""></th>
@@ -19,7 +19,7 @@
     <?php $count= 0;
     	foreach($entry as $check)
     	{
-    		if($check['key'] == $val['id'])
+    		if($check['key'] == $val['id'] && $check['deleted'] == "")
     		{
     			$count++;		
     		}
@@ -36,7 +36,7 @@
   if($usercheck['acronym']):
   	 if($check == true):?>
   	
-  	 <div style='background-color:#C7C7C7;border:1px solid #ccc;width:95%'>
+  	 <div style='background-color:#C7C7C7;margin-top:1em; border:3px groove #ccc;width:95%'>
 	<h4 style='text-align:center; margin-top:10px;'>Medlemmar</h4>
 	</div>
   	
@@ -45,7 +45,7 @@
   <?php foreach($forum as $val):?>
   
 	  <?php if($val['key'] == "medlem"):?>
-	  <div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding-top:10px;width:95%'>
+	  <div style='background-color:#f6f6f6;border:1px solid #ccc;padding-top:10px;width:95.2%'>
 	    <table id=forum>
 	    <tr>
 	    <th id=forumThIm><img  style="height:50px; width: 67px;" src="http://www.student.bth.se/~mnsv11/project/site/themes/mytheme/wheel.png" alt=""></th>
@@ -54,7 +54,7 @@
 	        <?php $count= 0;
     	foreach($entry as $check)
     	{
-    		if($check['key'] == $val['id'])
+    		if($check['key'] == $val['id'] && $check['deleted'] == "")
     		{
     			$count++;		
     		}

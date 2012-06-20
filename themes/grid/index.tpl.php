@@ -10,8 +10,12 @@
 
 <body id=<?=$title?>>
 <div id='all-wrap'>
+	<div id='loginBox'>
+		<div id='login-menu'><?=login_menu()?></div>
+		<div id='message'><?=get_messages_from_session()?></div>
+	</div>
 <?php if($showMenu == "true"): ?>
-	
+    <div id='outerMenuField'>
 	<fieldset class='menuField'>
 	<img id='logo_menu' src='<?=theme_url($logo)?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' /img>
 		<div class='menu'>
@@ -23,13 +27,14 @@
 			<?php if($check == "logged"):?>
 				<meta http-equiv="refresh" content="600; URL=<?=$url?>"/>
 			<?php endif; ?>
-			<div id='message'><?=get_messages_from_session()?></div>
-			<div id='login-menu'><?=login_menu()?></div>
+			
+			
 		  </div>
 		   
 		</div>
 		
 	</fieldset>
+   </div>
 	<hr style="color:white;">
 	<?php endif; ?>
 	

@@ -27,7 +27,7 @@ class CFormForumMain2A extends CForm {
    	 ->AddElement(new CFormElementColor('color', array('value'=>'', 'class'=>'color')))
    	 ->AddElement(new CFormElementButton('Lägg till färg', array('value'=>'[color=','value2'=>'][/color]', 'title' =>'')))
    	 ->AddElement(new CFormElementButton('YouTube', array('value'=>'[youtube][/youtube]','value2'=>'','title' =>'kopiera adressen ex. www.youtube.com/embed/W-Q7RMpINVo')))
-    	 ->AddElement(new CFormElementTextarea('data', array('label'=>'Add entry:', 'value' => $object['data'])))
+    	 ->AddElement(new CFormElementTextarea('data', array('label'=>'', 'value' => $object['data'])))
     	 ->AddElement(new CFormElementHidden('type', array('value'=> $object['type'])))
     	 ->AddElement(new CFormElementHidden('key', array('value'=>$object['key'])))
     	 ->AddElement(new CFormElementHidden('id', array('value'=> $object['id'])))

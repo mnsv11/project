@@ -16,12 +16,13 @@ class CFormForumCat extends CForm {
     parent::__construct();
     $this->forum = $forum;
     $this->AddElement(new CFormElementHidden('id', array('value'=>$forum['id'])))
-         ->AddElement(new CFormElementText('title', array('value'=>$forum['title'])))
+         ->AddElement(new CFormElementText('title', array('value'=>$forum['title'],'required'=>true)))
          ->AddElement(new CFormElementSelect('Gäster', array('value'=>$forum['type'])))
          ->AddElement(new CFormElementHidden('type', array('value'=>"kategori")))
          ->AddElement(new CFormElementHidden('filter', array('value'=>"plain")))
          ->AddElement(new CFormElementSubmit('spara', array('callback'=>array($this, 'DoSave'), 'callback-args'=>array($forum))));
 
+         $this->SetValidation('title', array('not_empty'));
   }
   
 

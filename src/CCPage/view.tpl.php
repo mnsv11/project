@@ -1,4 +1,5 @@
 <div id=insidePrime>
+<div id=viewNews>
 <?php if($contents != null):?>
 <div style='background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;width:80%'>
   <?php foreach($contents as $val):?>
@@ -60,4 +61,4 @@ foreach($entries as $val)
   <p>404: No such pages exists.</p>
 <?php endif;?>
 </div>
-
+</div>

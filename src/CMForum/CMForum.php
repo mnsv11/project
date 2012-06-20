@@ -45,6 +45,11 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
     $order_order  = isset($args['order-order']) ? $args['order-order'] : 'ASC';
     $order_by     = isset($args['order-by'])    ? $args['order-by'] : 'id';    
     $queries = array(
+      'drop table visit'        => "DROP TABLE IF EXISTS Visit;",   
+      'create table visit'      => "CREATE TABLE IF NOT EXISTS Visit (user TEXT, thread INTEGER, created DATETIME default (datetime('now')));",  
+      'check visit'             => 'SELECT * FROM Visit WHERE (user=?);',
+      'insert visit'            => 'INSERT INTO Visit (user,thread) VALUES (?,?);',
+      'remove visit'		=> "Delete FROM Visit WHERE thread=?;",
       'drop table forum'        => "DROP TABLE IF EXISTS Forum;",
       'create table forum'      => "CREATE TABLE IF NOT EXISTS Forum (id INTEGER PRIMARY KEY, key TEXT KEY, type TEXT, title TEXT, data TEXT,category TEXT, filter TEXT, idUser INT, created DATETIME default (datetime('now')), updated DATETIME default NULL, deleted DATETIME default NULL, FOREIGN KEY(idUser) REFERENCES User(id));",
       'insert forum'            => 'INSERT INTO Forum (key,type,title,data,category,filter,idUser) VALUES (?,?,?,?,?,?,?);',
@@ -74,6 +79,8 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
         try {
           $this->db->ExecuteQuery(self::SQL('drop table forum'));
           $this->db->ExecuteQuery(self::SQL('create table forum'));
+          $this->db->ExecuteQuery(self::SQL('drop table visit'));
+          $this->db->ExecuteQuery(self::SQL('create table visit'));
           $this->db->ExecuteQuery(self::SQL('insert forum'), array('gäster', 'kategori', 'Information', "",'gäst', 'plain', $this->user['id']));
           $this->db->ExecuteQuery(self::SQL('insert forum'), array('medlem', 'kategori', 'Suzuki', "",'medlem', 'plain', $this->user['id']));
           $this->db->ExecuteQuery(self::SQL('insert forum'), array('medlem', 'kategori', 'Mek', "",'medlem', 'plain', $this->user['id']));
@@ -145,6 +152,23 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
    	  }
   }
   
+   /**
+  *Check if thread is visited
+  *
+  */
+    public function checkVisited($args=null)
+  {	
+  	  return $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('check visit', $args), array($args['user']));
+  }
+  
+  
+  /**
+  *add to visited
+  *
+  */
+  public function addVisit($user, $thread){
+  	$this->db->ExecuteQuery(self::SQL('insert visit'), array($user, $thread));
+  }
   
   /**
   *edit forum
@@ -156,14 +180,15 @@ class CMForum extends CObject implements IHasSQL, ArrayAccess, IModule {
   	  $this->db->ExecuteQuery(self::SQL('update forum'), array($this['key'], $this['type'], $this['title'], $this['data'],$this['category'], $this['filter'], $this['id']));
   	  $msg = 'uppdaterad';
   	  $rowcount = $this->db->RowCount();
-  	  
+  	
           if($rowcount) {
           	  $this->AddMessage('success', "{$this['type']} {$msg}");
+          	  $this->db->ExecuteQuery(self::SQL('remove visit'), array($this['id']));
           } else {
           	  $this->AddMessage('error', "{$this['type']} ej {$msg} ");
           }
           return $rowcount === 1;
-  	  
+  	 
   }
   
     /**

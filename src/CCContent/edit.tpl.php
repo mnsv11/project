@@ -1,4 +1,5 @@
 <div id=insidePrime>
+<div id=content>
 <?php if($usercheck['groups'][0]['idGroups'] == "1"):?>
 <?php if($content['created']): ?>
   <h1>Edit Content</h1>
@@ -25,9 +26,9 @@
 
 <p>
 <a href='<?=create_url('content', 'create')?>'>Create new</a>
-<a href='<?=create_url('page', 'view', $content['id'])?>'>View</a>
 </p>
 <?php else:?>
 <h3>Du har inte behörighet för denna sidan</h3>
 <?php endif;?>
+</div>
 </div>

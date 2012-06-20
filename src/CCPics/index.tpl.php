@@ -4,7 +4,7 @@
 
 
 <fieldset style="width:900px;margin-left:200px;">
-<table style="width:900px;">
+<table style="width:900px;margin-left:50px;">
 
 <?php foreach($pictures as $val):?>
 
@@ -26,7 +26,7 @@
 
 
 <?php if($usercheck['groups'][0]['idGroups'] == "1"):?>
-<p style="margin-left:200px;"><input  type="button" value="Lägg till bild" onClick="top.location='<?=create_url("pics/addPics")?>'">
+<p style="margin-left:250px;width:400px;"><input  type="button" value="Lägg till bild" onClick="top.location='<?=create_url("pics/addPics")?>'">
 <input  type="button" value="Tabort bild" onClick="top.location='<?=create_url("pics/removePics")?>'"></p>
 <?php endif;?>
 

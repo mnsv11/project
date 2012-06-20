@@ -3,7 +3,7 @@
  */
 @import url(../../../themes/grid/style.php);
 
-html{background-color:#E8E8E8;}
+html{background-color:#E8E8E8;min-height: 101%;}
 
 body{background-color:#E8E8E8;}
 
@@ -18,11 +18,10 @@ iframe{width:95px;}
 
 #primary{text-align:left;margin:auto;}
 #insidePrime{width:830px;}
-h1#insidePrime{padding-left:20px;margin-left:0px; width:800px;}
+h1#insidePrime{padding-left:20px;margin-left:0px; width:780px;}
 a#insidePrime{padding-left:20px;margin-left:400px; width:800px;}
 em#insidePrime{padding-left:20px;margin-left:0px; width:800px;}
-h2#insidePrime{padding-left:20px;margin-left:0px; width:800px;}
-#outer-wrap-footer{background-color:white;}
+h3#insidePrime{padding-left:20px;margin-left:0px; width:800px;}
 a{color:#808080}
 
 #rightbar{float:right;}
@@ -37,20 +36,21 @@ a{color:#808080}
                   background:#E8E8E8;
 		  border-radius: 0px;
 		  box-shadow: 0px 0px 0px #555;}
-#logo_menu{float:left;padding-right:20px;}	
+		  
+#outer-wrap-footer{background-color:white;}
+#inner-wrap-footer{padding-left:80px;}
+#logo_menu{float:left;padding-right:20px;margin-right:20px;margin-left:80px;}	
 		  
 #inner-wrap-footer{padding-top:0px;width:900px;}
 
-#leftbar{margin-left:200px;margin-right:0px;}
+#leftbar{margin-left:260px;margin-right:50px;}
 #rightbar{margin-right:50px;}
-		  
+#outerMenuField{width:950px;margin:auto}	  
 .menuField{    border-radius: 0px;
 	       border: 0px; 
 	       margin-bottom:20px;
 	       padding-top:20px;
-	       padding-left: 450px;
-	       padding-right: 400px;
-	       width:1200px;
+	       width:1300px;
 	       background:#E8E8E8;}
 	       
 
@@ -75,12 +75,31 @@ a{color:#808080}
 
 
 }
+
+/* 
+login menyn och meddelande rutan
+*/
 #login-menu{float:right;padding-top:12px;margin-right:50px;}
-#all-wrap{min-height:900px;}
+#all-wrap{min-height:950px;}
 div.menu a:hover   {border-radius: 0px; }
-		    
+.error, .alert, .warning, .notice, .success, .info { 
+padding-bottom:15px;
+padding-top:10px;
+margin-left:20px; 
+margin-top:10px;
+border: 2px solid #ddd; 
+border-radius: 30px;
+text-align:center;
+font-size:10px;
+font-weight:900;
+height:10px;}
+
 .menu{padding-top:30px;}
-#message{float:left;margin-right:0px; width:auto}
+#message{float:left; width:auto}
+#loginBox{width:400px;float:right;}
+
+
+
 
 #flash{width:921px; margin-bottom:30px;}
 #about{float:left;padding-right:10px;padding-top:7px;}
@@ -119,6 +138,10 @@ body#Forum a#Forum-,
 body#Page a#Nyheter- {background:white;border-radius: 5px;}
 td{width:50px;}
 
+/* 
+misc
+*/
+div#forum{margin-left:90px;}
 table#forum{width:800px;}
 th#forum{width:180px;}
 th#forumTh{width:100px;padding-left:25px;}
@@ -131,16 +154,12 @@ table{width:450px;}
 #form-element-data{width:80%;height:200px;}
 #boooba{width:250px;height:80px;}
 #tdmain{width:140px;}
-.error, .alert, .warning, .notice, .success, .info { 
-padding-bottom:20px;
-padding-top:0px; 
-margin-left:20px; 
-margin-top:10px;
-border: 2px solid #ddd; 
-border-radius: 30px;
-text-align:center;
-font-size:10px;
-font-weight:900;
-height:10px;}
-
+#guestBook{margin-left:70px;width:600px;}
+#om{width:800px;}
+#admin{margin-left:100px;margin-top:30px;}
+#content{margin-left:80px;}
+#news{width:800px;}
+#viewNews{margin-left:50px;}
+div#addPics{margin-left:120px;}
+h2#addPics{width:300px;}
 #form-element-color{width:70px;}

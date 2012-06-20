@@ -1,4 +1,5 @@
 <div id=insidePrime>
+<div id=forum>
 <script type="text/javascript" src="../../src/CCForum/jscolor/jscolor.js"></script>
 <?php if($forum['type'] == "tråd"): ?>
 	<?php if($title== "Edit"):?>
@@ -20,7 +21,7 @@ function addText(text){
 document.getElementById('form-element-data').value += text;
 }
 </script>
-<div style="float:right;margin-top:<?=$top?>px;margin-right:250px;width:90px;">
+<div style="float:right;margin-top:<?=$top?>px;margin-right:150px;width:90px;">
 <a href="#" onClick="addText(':)')"><img border="0" src="../../site/themes/mytheme/icon_smile.gif"  width="18" height="18" /></a>
 <a href="#" onClick="addText(':D')"><img border="0" src="../../site/themes/mytheme/icon_biggrin.gif"  width="18" height="18" /></a>
 <a href="#" onClick="addText(':(')"><img border="0" src="../../site/themes/mytheme/icon_sad.gif"  width="18" height="18" /></a>
@@ -59,7 +60,7 @@ document.getElementById('form-element-data').value += text;
 <?php endif; ?>
 </em></p>
 </div>
-
+</div>
 
 
 

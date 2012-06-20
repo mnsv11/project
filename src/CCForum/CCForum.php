@@ -25,7 +25,7 @@ class CCForum extends CObject implements IController {
    */
   public function index($id=null) {
   	  $this->session->storePage('../forum');
-  	  
+  	  $userCheck = $this->session->GetAuthenticatedUser();
     $forum = new CMForum($id);
 
     $form = new CFormForumCat($forum);
@@ -41,6 +41,7 @@ class CCForum extends CObject implements IController {
                   'usercheck' => $this->session->GetAuthenticatedUser(),
                   'forum'=>$forum->ListAll(array('type'=>'kategori', 'order-by'=>'type', 'order-order'=>'DESC')),
                   'entry'=>$forum->ListAll(array('type'=>'tråd', 'order-by'=>'type', 'order-order'=>'DESC')),
+                  'visit'=>$forum->checkVisited(array('user'=>$userCheck['id'], 'order-by'=>'type', 'order-order'=>'DESC')),
                   'form'=>$form,
                   
                 ),'leftbar');
@@ -168,7 +169,7 @@ class CCForum extends CObject implements IController {
   	  
     $forum = new CMForum($id);
     $form = new CFormForumThread($forum);
-
+    $userCheck = $this->session->GetAuthenticatedUser();
     $this->session->storePage('../forum/view/' . $forum['id']);
     $status = $form->Check();
     if($this->session->GetAuthenticatedUser() == "" && $forum['category'] == "medlem")
@@ -189,6 +190,7 @@ class CCForum extends CObject implements IController {
                   'forum' => $forum,
                   'usercheck' => $this->session->GetAuthenticatedUser(),
                   'entries'=>$forum->ListAll(array('type'=>'tråd', 'order-by'=>'type', 'order-order'=>'DESC')),
+                  'visit'=>$forum->checkVisited(array('user'=>$userCheck['id'], 'order-by'=>'type', 'order-order'=>'DESC')),
                   'form'=>$form,
                 ),'leftbar');
  }
@@ -211,6 +213,8 @@ class CCForum extends CObject implements IController {
     	  $this->RedirectToController('../user/login');
     	     	    
     }
+    $user = $this->session->GetAuthenticatedUser();
+    $forum->addVisit($user['id'] ,$forum['id']);
     if($status === false) {
       $this->AddMessage('notice', 'The form could not be processed.');
       $this->RedirectToControllerMethod();
